@@ -45,7 +45,7 @@
     
     <title>
         
-            归档: 2018/7 | 
+            windows通过wamp apache实现代理及反向代理 | 
         
         蔡胜龙的博客 | 技术交流平台
     </title>
@@ -56,7 +56,7 @@
 
     <meta name="format-detection" content="telephone=no"/>
     <meta name="description" itemprop="description" content="">
-    <meta name="keywords" content="蔡胜龙的博客|前端攻城狮">
+    <meta name="keywords" content="蔡胜龙的博客|前端攻城狮,前端,javascript">
     <meta name="theme-color" content="#0097A7">
 
     <!-- Disable Fucking Bloody Baidu Tranformation -->
@@ -217,7 +217,7 @@
     <!-- WebAPP Icons -->
     <meta name="mobile-web-app-capable" content="yes">
     <meta name="application-name" content="蔡胜龙的博客 | 技术交流平台">
-    <meta name="msapplication-starturl" content="http://yoursite.com/archives/2018/07/">
+    <meta name="msapplication-starturl" content="http://yoursite.com/2018/06/29/wamp-server/">
     <meta name="msapplication-navbutton-color" content="#0097A7">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-title" content="蔡胜龙的博客 | 技术交流平台">
@@ -232,13 +232,16 @@
     
 
     <!-- The Open Graph protocol -->
-    <meta property="og:url" content="http://yoursite.com/archives/2018/07/">
+    <meta property="og:url" content="http://yoursite.com/2018/06/29/wamp-server/">
     <meta property="og:type" content="blog">
-    <meta property="og:title" content="归档: 2018/7 | 蔡胜龙的博客 | 技术交流平台">
+    <meta property="og:title" content="windows通过wamp apache实现代理及反向代理 | 蔡胜龙的博客 | 技术交流平台">
     <meta property="og:image" content="/img/favicon.png">
     <meta property="og:description" content="">
-    
+    <meta property="og:article:tag" content="前端"> <meta property="og:article:tag" content="javascript"> 
 
+    
+        <meta property="article:published_time" content="Fri Jun 29 2018 22:31:03 GMT+0800">
+        <meta property="article:modified_time" content="Fri Aug 10 2018 20:32:43 GMT+0800">
     
 
     <!-- The Twitter Card protocol -->
@@ -246,13 +249,43 @@
 
     <!-- Add canonical link for SEO -->
     
-        <link rel="canonical" href="http://yoursite.com/archives/2018/07/index.html" />
+        <link rel="canonical" href="http://yoursite.com/2018/06/29/wamp-server/index.html" />
     
 
     <!-- Structured-data for SEO -->
     
         
 
+
+<script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "mainEntityOfPage": "http://yoursite.com/2018/06/29/wamp-server/index.html",
+    "headline": "windows通过wamp apache实现代理及反向代理",
+    "datePublished": "Fri Jun 29 2018 22:31:03 GMT+0800",
+    "dateModified": "Fri Aug 10 2018 20:32:43 GMT+0800",
+    "author": {
+        "@type": "Person",
+        "name": "蔡胜龙",
+        "image": {
+            "@type": "ImageObject",
+            "url": "/img/avater.jpg"
+        },
+        "description": "Hi, nice to meet you"
+    },
+    "publisher": {
+        "@type": "Organization",
+        "name": "蔡胜龙的博客 | 技术交流平台",
+        "logo": {
+            "@type":"ImageObject",
+            "url": "/img/favicon.png"
+        }
+    },
+    "keywords": ",前端,javascript蔡胜龙的博客|前端攻城狮",
+    "description": "",
+}
+</script>
 
 
     
@@ -286,283 +319,277 @@
                         </button>
                     
 
-                    <!-- Index Module -->
-<div class="material-index mdl-grid">
-    
-    <div class="locate-thumbnail-symbol"></div>
+                    <!-- Post TOC -->
 
-    <!-- Pin on top -->
+    
+    <!-- Back Button -->
+    <!--
+    <div class="material-back" id="backhome-div" tabindex="0">
+        <a class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon"
+           href="#" onclick="window.history.back();return false;"
+           target="_self"
+           role="button"
+           data-upgraded=",MaterialButton,MaterialRipple">
+            <i class="material-icons" role="presentation">arrow_back</i>
+            <span class="mdl-button__ripple-container">
+                <span class="mdl-ripple"></span>
+            </span>
+        </a>
+    </div>
+    -->
+
+
+    <!-- Left aligned menu below button -->
+    
+    
+    <button id="post-toc-trigger-btn"
+        class="mdl-button mdl-js-button mdl-button--icon">
+        <i class="material-icons">format_list_numbered</i>
+    </button>
+
+    <ul class="post-toc-wrap mdl-menu mdl-menu--bottom-left mdl-js-menu mdl-js-ripple-effect" for="post-toc-trigger-btn" style="max-height:80vh; overflow-y:scroll;">
+        <ol class="post-toc"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#下载安装："><span class="post-toc-number">1.</span> <span class="post-toc-text">下载安装：</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#配置："><span class="post-toc-number">2.</span> <span class="post-toc-text">配置：</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#配置说明："><span class="post-toc-number">3.</span> <span class="post-toc-text">配置说明：</span></a></li></ol>
+    </ul>
     
 
-    <!-- Normal Post -->
-    
-        
-            
-                <!-- Paradox Thumbnail -->
-                <div class="post_entry-module mdl-card mdl-shadow--2dp mdl-cell mdl-cell--12-col fade out">
-    <!-- Post Thumbnail -->
+
+
+
+<!-- Layouts -->
+
+    <!-- Post Module -->
+    <div class="material-post_container">
+
+        <div class="material-post mdl-grid">
+            <div class="mdl-card mdl-shadow--4dp mdl-cell mdl-cell--12-col">
+
+                <!-- Post Header(Thumbnail & Title) -->
+                
+    <!-- Paradox Post Header -->
     
         
             <!-- Random Thumbnail -->
             <div class="post_thumbnail-random mdl-card__media mdl-color-text--grey-50">
-        
-    
+            <script type="text/ls-javascript" id="post-thumbnail-script">
+    var randomNum = Math.floor(Math.random() * 19 + 1);
 
-        <!-- Post Title -->
-        <p class="article-headline-p"><a href="/2018/07/28/cache/">与浏览器缓存相关的expires，cache-control，last-modified，Etag等头部信息</a></p>
-    </div>
-
-    <!-- Post Excerpt -->
-    <div class="mdl-color-text--grey-600 mdl-card__supporting-text post_entry-content">
-        
-            浏览器缓存对于现代网页是非常有用的功能，它能将大部分改变频率不大的应用组件缓存到本地以加速用户下次访问时页面的响应时间。
-        
-        &nbsp;&nbsp;&nbsp;
-        <span>
-            <a href="/2018/07/28/cache/" target="_self">阅读全文</a>
-        </span>
-    </div>
-    <!-- Post_entry Info-->
-    <div id="post_entry-info">
-        <div id="post_entry-left-info" class="mdl-card__supporting-text meta mdl-color-text--grey-600 ">
-            <!-- Author Avatar -->
-            <div id="author-avatar">
-                <img src="/img/avater.jpg" width="44px" height="44px" alt="蔡胜龙's avatar">
-            </div>
-            <div>
-                <strong>蔡胜龙</strong>
-                <span>7月 28, 2018</span>
-            </div>
-        </div>
-        <div id="post_entry-right-info">
-          
-              <!-- Category -->
-              <span class="post_entry-category">
-                  <a class="post_category-link" href="/categories/前端/">前端</a>, <a class="post_category-link" href="/categories/前端/技术/">技术</a>
-              </span>
-            
-
-            
-
-            
-
-            <!-- Post Views -->
-            <span class="post_entry-views">
-            </span>
-        </div>
-    </div>
-</div>
-
-            
-            
-        
-    
-        
-            
-                <!-- Paradox Thumbnail -->
-                <div class="post_entry-module mdl-card mdl-shadow--2dp mdl-cell mdl-cell--12-col fade out">
-    <!-- Post Thumbnail -->
-    
-        
-            <!-- Random Thumbnail -->
-            <div class="post_thumbnail-random mdl-card__media mdl-color-text--grey-50">
-        
-    
-
-        <!-- Post Title -->
-        <p class="article-headline-p"><a href="/2018/07/19/muti-webpack/">多页项目的webpack配置</a></p>
-    </div>
-
-    <!-- Post Excerpt -->
-    <div class="mdl-color-text--grey-600 mdl-card__supporting-text post_entry-content">
-        
-            在我们使用vue，angular等框架开发的时候，大多数都是构建单页项目。而且，像这样的框架都有对应的命令一步生成webpack配置（比如vue的v...
-        
-        &nbsp;&nbsp;&nbsp;
-        <span>
-            <a href="/2018/07/19/muti-webpack/" target="_self">阅读全文</a>
-        </span>
-    </div>
-    <!-- Post_entry Info-->
-    <div id="post_entry-info">
-        <div id="post_entry-left-info" class="mdl-card__supporting-text meta mdl-color-text--grey-600 ">
-            <!-- Author Avatar -->
-            <div id="author-avatar">
-                <img src="/img/avater.jpg" width="44px" height="44px" alt="蔡胜龙's avatar">
-            </div>
-            <div>
-                <strong>蔡胜龙</strong>
-                <span>7月 19, 2018</span>
-            </div>
-        </div>
-        <div id="post_entry-right-info">
-          
-              <!-- Category -->
-              <span class="post_entry-category">
-                  <a class="post_category-link" href="/categories/前端/">前端</a>, <a class="post_category-link" href="/categories/前端/技术/">技术</a>
-              </span>
-            
-
-            
-
-            
-
-            <!-- Post Views -->
-            <span class="post_entry-views">
-            </span>
-        </div>
-    </div>
-</div>
-
-            
-            
-        
-    
-        
-            
-                <!-- Paradox Thumbnail -->
-                <div class="post_entry-module mdl-card mdl-shadow--2dp mdl-cell mdl-cell--12-col fade out">
-    <!-- Post Thumbnail -->
-    
-        
-            <!-- Random Thumbnail -->
-            <div class="post_thumbnail-random mdl-card__media mdl-color-text--grey-50">
-        
-    
-
-        <!-- Post Title -->
-        <p class="article-headline-p"><a href="/2018/07/15/bable/">babel-loader，babel-core，babel-polify，babel-plugin-transform-runtime之间的关系</a></p>
-    </div>
-
-    <!-- Post Excerpt -->
-    <div class="mdl-color-text--grey-600 mdl-card__supporting-text post_entry-content">
-        
-            babel-core在npm官网中的解释是：Babel compiler core.
-也就是Babel编译器的核心，因此意味着如果要使...
-        
-        &nbsp;&nbsp;&nbsp;
-        <span>
-            <a href="/2018/07/15/bable/" target="_self">阅读全文</a>
-        </span>
-    </div>
-    <!-- Post_entry Info-->
-    <div id="post_entry-info">
-        <div id="post_entry-left-info" class="mdl-card__supporting-text meta mdl-color-text--grey-600 ">
-            <!-- Author Avatar -->
-            <div id="author-avatar">
-                <img src="/img/avater.jpg" width="44px" height="44px" alt="蔡胜龙's avatar">
-            </div>
-            <div>
-                <strong>蔡胜龙</strong>
-                <span>7月 15, 2018</span>
-            </div>
-        </div>
-        <div id="post_entry-right-info">
-          
-              <!-- Category -->
-              <span class="post_entry-category">
-                  <a class="post_category-link" href="/categories/前端/">前端</a>, <a class="post_category-link" href="/categories/前端/技术/">技术</a>
-              </span>
-            
-
-            
-
-            
-
-            <!-- Post Views -->
-            <span class="post_entry-views">
-            </span>
-        </div>
-    </div>
-</div>
-
-            
-            
-        
-    
-        
-            
-                <!-- Paradox Thumbnail -->
-                <div class="post_entry-module mdl-card mdl-shadow--2dp mdl-cell mdl-cell--12-col fade out">
-    <!-- Post Thumbnail -->
-    
-        
-            <!-- Random Thumbnail -->
-            <div class="post_thumbnail-random mdl-card__media mdl-color-text--grey-50">
-        
-    
-
-        <!-- Post Title -->
-        <p class="article-headline-p"><a href="/2018/07/03/git-pass/">本地仓库每次向github提交代码都需要输入账号密码的解决方法</a></p>
-    </div>
-
-    <!-- Post Excerpt -->
-    <div class="mdl-color-text--grey-600 mdl-card__supporting-text post_entry-content">
-        
-            当我们向github远程仓库push代码的时候可能会出现每次都要求输入账号密码的问题。
-其实会出现这个问题的原因只是因为你在添加ori...
-        
-        &nbsp;&nbsp;&nbsp;
-        <span>
-            <a href="/2018/07/03/git-pass/" target="_self">阅读全文</a>
-        </span>
-    </div>
-    <!-- Post_entry Info-->
-    <div id="post_entry-info">
-        <div id="post_entry-left-info" class="mdl-card__supporting-text meta mdl-color-text--grey-600 ">
-            <!-- Author Avatar -->
-            <div id="author-avatar">
-                <img src="/img/avater.jpg" width="44px" height="44px" alt="蔡胜龙's avatar">
-            </div>
-            <div>
-                <strong>蔡胜龙</strong>
-                <span>7月 03, 2018</span>
-            </div>
-        </div>
-        <div id="post_entry-right-info">
-          
-              <!-- Category -->
-              <span class="post_entry-category">
-                  <a class="post_category-link" href="/categories/前端/">前端</a>, <a class="post_category-link" href="/categories/前端/技术/">技术</a>
-              </span>
-            
-
-            
-
-            
-
-            <!-- Post Views -->
-            <span class="post_entry-views">
-            </span>
-        </div>
-    </div>
-</div>
-
-            
-            
-        
-    
-
-    
-
-    
-        <script type="text/ls-javascript" id="thumbnail-script">
-    var randomNum;
-
-    var locatePost = $('.locate-thumbnail-symbol').next();
-    for(var i = 0; i < 10; i++) {
-        randomNum = Math.floor(Math.random() * 19 + 1);
-
-        locatePost.children('.post_thumbnail-random').attr('id', 'random_thumbnail-'+randomNum);
-        locatePost.children('.post_thumbnail-random').attr('data-original', '/img/random/material-' + randomNum + '.png');
+    $('.post_thumbnail-random').attr('data-original', '/img/random/material-' + randomNum + '.png');
     $('.post_thumbnail-random').addClass('lazy');
-
-        locatePost = locatePost.next();
-    }
 </script>
 
+        
+    
+            <p class="article-headline-p">
+                windows通过wamp apache实现代理及反向代理
+            </p>
+        </div>
+
+
+
+
+
+                
+                    <!-- Paradox Post Info -->
+                    <div class="mdl-color-text--grey-700 mdl-card__supporting-text meta">
+
+    <!-- Author Avatar -->
+    <div id="author-avatar">
+        <img src="/img/avater.jpg" width="44px" height="44px" alt="Author Avatar"/>
+    </div>
+    <!-- Author Name & Date -->
+    <div>
+        <strong>蔡胜龙</strong>
+        <span>6月 29, 2018</span>
+    </div>
+
+    <div class="section-spacer"></div>
+
+    <!-- Favorite -->
+    <!--
+        <button id="article-functions-like-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon btn-like">
+            <i class="material-icons" role="presentation">favorite</i>
+            <span class="visuallyhidden">favorites</span>
+        </button>
+    -->
+
+    <!-- Qrcode -->
+    
+
+    <!-- Tags (bookmark) -->
+    
+    <button id="article-functions-viewtags-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
+        <i class="material-icons" role="presentation">bookmark</i>
+        <span class="visuallyhidden">bookmark</span>
+    </button>
+    <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="article-functions-viewtags-button">
+        <li class="mdl-menu__item">
+        <a class="post_tag-link" href="/tags/javascript/">javascript</a></li><li class="mdl-menu__item"><a class="post_tag-link" href="/tags/前端/">前端</a>
+    </ul>
+    
+
+    <!-- Share -->
+    
+        <button id="article-fuctions-share-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
+    <i class="material-icons" role="presentation">share</i>
+    <span class="visuallyhidden">share</span>
+</button>
+<ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="article-fuctions-share-button">
+    
+
+    
+
+    <!-- Share Weibo -->
+    
+        <a class="post_share-link" href="http://service.weibo.com/share/share.php?appkey=&title=windows通过wamp apache实现代理及反向代理&url=http://yoursite.com/2018/06/29/wamp-server/index.html&pic=http://yoursite.com/img/favicon.png&searchPic=false&style=simple" target="_blank">
+            <li class="mdl-menu__item">
+                分享到微博
+            </li>
+        </a>
+    
+
+    <!-- Share Twitter -->
+    
+
+    <!-- Share Facebook -->
+    
+
+    <!-- Share Google+ -->
+    
+        <a class="post_share-link" href="https://plus.google.com/share?url=http://yoursite.com/2018/06/29/wamp-server/index.html" target="_blank">
+            <li class="mdl-menu__item">
+                分享到 Google+
+            </li>
+        </a>
+    
+
+    <!-- Share LinkedIn -->
+    
+
+    <!-- Share QQ -->
+    
+        <a class="post_share-link" href="http://connect.qq.com/widget/shareqq/index.html?site=蔡胜龙的博客 | 技术交流平台&title=windows通过wamp apache实现代理及反向代理&summary=&pics=http://yoursite.com/img/favicon.png&url=http://yoursite.com/2018/06/29/wamp-server/index.html" target="_blank">
+            <li class="mdl-menu__item">
+                分享到 QQ
+            </li>
+        </a>
+    
+
+    <!-- Share Telegram -->
+    
+        <a class="post_share-link" href="https://telegram.me/share/url?url=http://yoursite.com/2018/06/29/wamp-server/index.html&text=windows通过wamp apache实现代理及反向代理" target="_blank">
+            <li class="mdl-menu__item">
+                分享到 Telegram
+            </li>
+        </a>
+    
+</ul>
+
     
 </div>
+
+                
+
+                <!-- Post Content -->
+                <div id="post-content" class="mdl-color-text--grey-700 mdl-card__supporting-text fade out">
+    
+        <p>wamp是一款基于windows平台的AMP（Apache/MySQL/PHP）集成软件。安装和使用都非常简便，可以让我们避免由于缺乏AMP的知识而无法正确设置环境。</p>
+<h3 id="下载安装："><a href="#下载安装：" class="headerlink" title="下载安装："></a>下载安装：</h3><p>首先可以到官网下载合适版本的wampServer下载，双击安装，这是一个全自动化的过程，一直点next就行了，不多做解释。<br>官网地址：<a href="http://www.wampserver.com/en/" target="_blank" rel="noopener">http://www.wampserver.com/en/</a></p>
+<p>安装后双击应用图标开启服务，在浏览器地址栏中输入localhost并访问出现如下界面说明已正确安装<br><img src="wamp1.png" alt=""></p>
+<p>如果下图中的图标为橙色说明报错或启动失败，绿色说明正常启动<br><img src="wamp2.png" alt=""></p>
+<h3 id="配置："><a href="#配置：" class="headerlink" title="配置："></a>配置：</h3><p>首先打开apache的配置文件httpd.conf，去掉#Include conf/extra/htttpd-vhosts.conf前面的#号以开启虚拟主机功能<br><img src="wamp3.png" alt=""><br><img src="wamp4.png" alt=""></p>
+<p>（你也可以在wamp安装目录的路径下找到httpd.conf文件，比如我的路径是D:\wamp\bin\apache\Apache2.4.4\conf）</p>
+<p>接下来打开httpd-vhosts.conf文件，将下面的配置信息添加到文件的最后面即可</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">&lt;VirtualHost *:80&gt;</span><br><span class="line">    ServerAdmin webmaster@dummy-host2.example.com</span><br><span class="line">    DocumentRoot <span class="string">"D:/my_project"</span></span><br><span class="line">    ServerName local.oa.com</span><br><span class="line">    ServerAlias local.all.oa.com test.oa.com</span><br><span class="line">    ErrorLog <span class="string">"logs/dummy-host2.example.com-error.log"</span></span><br><span class="line">    CustomLog <span class="string">"logs/dummy-host2.example.com-access.log"</span> common</span><br><span class="line">    &lt;Directory <span class="string">"D:/my_project/"</span>&gt;</span><br><span class="line">    ProxyPass / http://10.121.104.134/cgi-bin</span><br><span class="line">    ProxyPassReverse / http://10.121.104.134/cgi-bin</span><br><span class="line">    ProxyPreserveHost On</span><br><span class="line">    Options Indexes FollowSymLinks Includes</span><br><span class="line">    AllowOverride All</span><br><span class="line">    Order Deny,Allow</span><br><span class="line">    Allow from all</span><br><span class="line">    &lt;/Directory&gt;</span><br><span class="line">&lt;/VirtualHost&gt;</span><br></pre></td></tr></table></figure>
+<h3 id="配置说明："><a href="#配置说明：" class="headerlink" title="配置说明："></a>配置说明：</h3><p><strong>1.DocumentRoot</strong>：服务器访问的文件根路径，不需要带结尾斜杠<br><strong>2.<directory></directory></strong>：用于包裹一组命令，这组命令只对这个指令后面跟的的路径（这里是D:/my_project/）有效，一般和DocumentRoot一致、但是结果要带斜杠<br><strong>3.ServerName</strong>：就是你要代理的域名<br><strong>4.ServerAlias</strong>：代理域名的别名，可以同时添加过个，用空格隔开<br><strong>5.proxyPass</strong>：该指令可以将远程服务器映射到本地服务器的URL空间；本地的服务器并不是扮演传统意义上的代理服务器的角色，而是表现为远程服务器的一个镜像。此本地服务器常被成为反向代理（reversed proxy）或者是网关（gateway）。路径是指本地虚拟路径的名字；url指远程服务器的一个部分URL，不能包含查询字符串。<br>ProxyPass后面跟的值就是你要代理的URL，但是把域名换成域名ip地址了。那么如何获得域名的ip地址呢？我们拿baidu.com来说。打开windows命令行，执行如下命令：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ nslookup baidu.com</span><br></pre></td></tr></table></figure></p>
+<p><img src="wamp5.png" alt=""><br>图中第一个红框中的值是远程服务器的ip地址，而我们要用的是第二个红框中的值，也就是域名的ip地址</p>
+<p>6.ProxyReverse： ProxyPassReverse 的配置总是和ProxyPass 一致，<br>它的作用在于反向代理，如果响应中有302重定向，ProxyPassReverse就派上用场。<br>举例说明，假设用户访问<a href="http://www.test.com/exam.php，" target="_blank" rel="noopener">http://www.test.com/exam.php，</a> 通过转发交给<a href="http://192.168.100.22/exam.php" target="_blank" rel="noopener">http://192.168.100.22/exam.php</a> 处理，假定exam.php处理的结果是实现redirect到login.php(使用相对路径,即省略了域名信息)，如果没有配置 反向代理，客户端收到的请求响应是重定向操作，并且重定向目的url为 <a href="http://192.168.100.22/login.php" target="_blank" rel="noopener">http://192.168.100.22/login.php</a> ， 而这个地址只是代理服务器能访问到的，可想而知，客户端肯定是打不开的，反之如果配置了反向代理，则会在转交HTTP重定向应答到客户端之前调整它为 <a href="http://www.test.com/login.php，" target="_blank" rel="noopener">http://www.test.com/login.php，</a> 即是在原请求之后追加上了redirect的路径。当客户端再次请求 <a href="http://www.test.com/login.php，" target="_blank" rel="noopener">http://www.test.com/login.php，</a> 代理服务器再次工作把其转发到 <a href="http://192.168.100.22/login.php。" target="_blank" rel="noopener">http://192.168.100.22/login.php。</a>  客户端到服务器称之为正向代理，那服务器到客户端就叫反向代理 httpd.conf 的修改例子, 可以放到VirtualHost节点配置里面</p>
+<p>以上ProxyPass和ProxyReserve的解释来自另外一篇博客，有兴趣可以阅读一下，原文链接：<a href="https://blog.csdn.net/u011277123/article/details/77165137" target="_blank" rel="noopener">https://blog.csdn.net/u011277123/article/details/77165137</a></p>
+<p>还没完，接下来回到httpd.conf文件，找到下面这几行</p>
+<p>#LoadModule proxy_module modules/mod_proxy.so</p>
+<p>#LoadModule proxy_ajp_module modules/mod_proxy_ajp.so</p>
+<p>#LoadModule proxy_balancer_module modules/mod_proxy_balancer.so</p>
+<p>#LoadModule proxy_connect_module modules/mod_proxy_connect.so</p>
+<p>#LoadModule proxy_express_module modules/mod_proxy_express.so</p>
+<p>#LoadModule proxy_fcgi_module modules/mod_proxy_fcgi.so</p>
+<p>#LoadModule proxy_ftp_module modules/mod_proxy_ftp.so</p>
+<p>#LoadModule proxy_html_module modules/mod_proxy_html.so</p>
+<p>#LoadModule proxy_http_module modules/mod_proxy_http.so</p>
+<p>#LoadModule proxy_scgi_module modules/mod_proxy_scgi.so</p>
+<p>#LoadModule slotmem_shm_module modules/mod_slotmem_shm.so</p>
+<p>#LoadModule ssl_module modules/mod_ssl.so</p>
+<p>#LoadModule vhost_alias_module modules/mod_vhost_alias.so</p>
+<p>去掉每一行前面的#号以加载相应的模块<br>然后配置好本地的域名：打开C:\Windows\System32\drivers\etc目录下的hosts文件在并在最后面添加下面几行内容<br>127.0.0.1    local.all.oa.com<br>127.0.0.1    local.oa.com<br>127.0.0.1    test.oa.com<br>保存并退出<br>重启wampServer，访问local.all.oa.com，local.oa.com，test.oa.com中的任意一个都可以访问到你上面设置好的项目目录（D:/my_project）,效果如下：<br><img src="wamp6.png" alt=""></p>
+<p>接下来就可以正常访问你的项目文件啦。而且项目中的请求也可以转发到上面的指定地址来处理，可以很好解决开发中接口跨域问题。</p>
+<p>最后感谢您的阅读，如有意见欢迎评论</p>
+
+        
+    
+
+    
+</div>
+
+
+                
+
+                <!-- Post Comments -->
+                
+                    
+    <!-- 使用 来必力 -->
+<div id="livere-comment">
+    <div id="lv-container" data-id="city" data-uid="MTAyMC8zODcwNS8xNTIzMw==">
+	<script type="text/ls-javascript" id="livere-comment-js">
+   (function(d, s) {
+       var j, e = d.getElementsByTagName(s)[0];
+       if (typeof LivereTower === 'function') { return; }
+       j = d.createElement(s);
+       j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+       j.async = true;
+       e.parentNode.insertBefore(j, e);
+   })(document, 'script');
+	</script>
+</div>
+</div>
+<style>
+    #livere-comment{
+        background-color: #eee;
+        padding: 2pc;
+    }
+</style>
+
+                
+            </div>
+
+            <!-- Post Prev & Next Nav -->
+            <nav class="material-nav mdl-color-text--grey-50 mdl-cell mdl-cell--12-col">
+    <!-- Prev Nav -->
+    
+        <a href="/2018/07/03/git-pass/" id="post_nav-newer" class="prev-content">
+            <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-color--white mdl-color-text--grey-900" role="presentation">
+                <i class="material-icons">arrow_back</i>
+            </button>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            新篇
+        </a>
+    
+
+    <!-- Section Spacer -->
+    <div class="section-spacer"></div>
+
+    <!-- Next Nav -->
+    
+        <a href="/2018/06/28/prototype/" id="post_nav-older" class="next-content">
+            旧篇
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-color--white mdl-color-text--grey-900" role="presentation">
+                <i class="material-icons">arrow_forward</i>
+            </button>
+        </a>
+    
+</nav>
+
+        </div>
+    </div>
+
 
 
                     

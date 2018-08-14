@@ -45,7 +45,7 @@
     
     <title>
         
-            归档: 2018/7 | 
+            与浏览器缓存相关的expires，cache-control，last-modified，Etag等头部信息 | 
         
         蔡胜龙的博客 | 技术交流平台
     </title>
@@ -56,7 +56,7 @@
 
     <meta name="format-detection" content="telephone=no"/>
     <meta name="description" itemprop="description" content="">
-    <meta name="keywords" content="蔡胜龙的博客|前端攻城狮">
+    <meta name="keywords" content="蔡胜龙的博客|前端攻城狮,前端,webpack">
     <meta name="theme-color" content="#0097A7">
 
     <!-- Disable Fucking Bloody Baidu Tranformation -->
@@ -217,7 +217,7 @@
     <!-- WebAPP Icons -->
     <meta name="mobile-web-app-capable" content="yes">
     <meta name="application-name" content="蔡胜龙的博客 | 技术交流平台">
-    <meta name="msapplication-starturl" content="http://yoursite.com/archives/2018/07/">
+    <meta name="msapplication-starturl" content="http://yoursite.com/2018/07/28/cache/">
     <meta name="msapplication-navbutton-color" content="#0097A7">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-title" content="蔡胜龙的博客 | 技术交流平台">
@@ -232,13 +232,16 @@
     
 
     <!-- The Open Graph protocol -->
-    <meta property="og:url" content="http://yoursite.com/archives/2018/07/">
+    <meta property="og:url" content="http://yoursite.com/2018/07/28/cache/">
     <meta property="og:type" content="blog">
-    <meta property="og:title" content="归档: 2018/7 | 蔡胜龙的博客 | 技术交流平台">
+    <meta property="og:title" content="与浏览器缓存相关的expires，cache-control，last-modified，Etag等头部信息 | 蔡胜龙的博客 | 技术交流平台">
     <meta property="og:image" content="/img/favicon.png">
     <meta property="og:description" content="">
-    
+    <meta property="og:article:tag" content="前端"> <meta property="og:article:tag" content="webpack"> 
 
+    
+        <meta property="article:published_time" content="Sat Jul 28 2018 16:28:22 GMT+0800">
+        <meta property="article:modified_time" content="Fri Aug 10 2018 20:32:43 GMT+0800">
     
 
     <!-- The Twitter Card protocol -->
@@ -246,13 +249,43 @@
 
     <!-- Add canonical link for SEO -->
     
-        <link rel="canonical" href="http://yoursite.com/archives/2018/07/index.html" />
+        <link rel="canonical" href="http://yoursite.com/2018/07/28/cache/index.html" />
     
 
     <!-- Structured-data for SEO -->
     
         
 
+
+<script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "mainEntityOfPage": "http://yoursite.com/2018/07/28/cache/index.html",
+    "headline": "与浏览器缓存相关的expires，cache-control，last-modified，Etag等头部信息",
+    "datePublished": "Sat Jul 28 2018 16:28:22 GMT+0800",
+    "dateModified": "Fri Aug 10 2018 20:32:43 GMT+0800",
+    "author": {
+        "@type": "Person",
+        "name": "蔡胜龙",
+        "image": {
+            "@type": "ImageObject",
+            "url": "/img/avater.jpg"
+        },
+        "description": "Hi, nice to meet you"
+    },
+    "publisher": {
+        "@type": "Organization",
+        "name": "蔡胜龙的博客 | 技术交流平台",
+        "logo": {
+            "@type":"ImageObject",
+            "url": "/img/favicon.png"
+        }
+    },
+    "keywords": ",前端,webpack蔡胜龙的博客|前端攻城狮",
+    "description": "",
+}
+</script>
 
 
     
@@ -286,283 +319,273 @@
                         </button>
                     
 
-                    <!-- Index Module -->
-<div class="material-index mdl-grid">
-    
-    <div class="locate-thumbnail-symbol"></div>
+                    <!-- Post TOC -->
 
-    <!-- Pin on top -->
+    
+    <!-- Back Button -->
+    <!--
+    <div class="material-back" id="backhome-div" tabindex="0">
+        <a class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon"
+           href="#" onclick="window.history.back();return false;"
+           target="_self"
+           role="button"
+           data-upgraded=",MaterialButton,MaterialRipple">
+            <i class="material-icons" role="presentation">arrow_back</i>
+            <span class="mdl-button__ripple-container">
+                <span class="mdl-ripple"></span>
+            </span>
+        </a>
+    </div>
+    -->
+
+
+    <!-- Left aligned menu below button -->
+    
+    
+    <button id="post-toc-trigger-btn"
+        class="mdl-button mdl-js-button mdl-button--icon">
+        <i class="material-icons">format_list_numbered</i>
+    </button>
+
+    <ul class="post-toc-wrap mdl-menu mdl-menu--bottom-left mdl-js-menu mdl-js-ripple-effect" for="post-toc-trigger-btn" style="max-height:80vh; overflow-y:scroll;">
+        <ol class="post-toc"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#Last-Modified-Wed-22-Feb-2018-04-15-54-GMT"><span class="post-toc-number">1.</span> <span class="post-toc-text">Last-Modified : Wed, 22 Feb 2018 04:15:54 GMT</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#If-Modified-Since-Wed-22-Feb-2018-04-15-54-GMT"><span class="post-toc-number">2.</span> <span class="post-toc-text">If-Modified-Since : Wed, 22 Feb 2018 04:15:54 GMT</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#HTTP-1-1-304-Not-Modified"><span class="post-toc-number">3.</span> <span class="post-toc-text">HTTP 1.1 304 Not Modified</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#Last-Modified-Wed-22-Feb-2018-04-15-54-GMT-1"><span class="post-toc-number">4.</span> <span class="post-toc-text">Last-Modified : Wed, 22 Feb 2018 04:15:54 GMT</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#Expires-Wed-22-Feb-2019-04-15-54-GMT"><span class="post-toc-number">5.</span> <span class="post-toc-text">Expires : Wed, 22 Feb 2019 04:15:54 GMT</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#Cache-Control-max-age-315360000"><span class="post-toc-number">6.</span> <span class="post-toc-text">Cache-Control : max-age=315360000</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#ETag-“-10c345b-4cg-459e1c1f-“"><span class="post-toc-number">7.</span> <span class="post-toc-text">ETag : “ 10c345b-4cg-459e1c1f “</span></a></li></ol>
+    </ul>
     
 
-    <!-- Normal Post -->
-    
-        
-            
-                <!-- Paradox Thumbnail -->
-                <div class="post_entry-module mdl-card mdl-shadow--2dp mdl-cell mdl-cell--12-col fade out">
-    <!-- Post Thumbnail -->
+
+
+
+<!-- Layouts -->
+
+    <!-- Post Module -->
+    <div class="material-post_container">
+
+        <div class="material-post mdl-grid">
+            <div class="mdl-card mdl-shadow--4dp mdl-cell mdl-cell--12-col">
+
+                <!-- Post Header(Thumbnail & Title) -->
+                
+    <!-- Paradox Post Header -->
     
         
             <!-- Random Thumbnail -->
             <div class="post_thumbnail-random mdl-card__media mdl-color-text--grey-50">
-        
-    
+            <script type="text/ls-javascript" id="post-thumbnail-script">
+    var randomNum = Math.floor(Math.random() * 19 + 1);
 
-        <!-- Post Title -->
-        <p class="article-headline-p"><a href="/2018/07/28/cache/">与浏览器缓存相关的expires，cache-control，last-modified，Etag等头部信息</a></p>
-    </div>
-
-    <!-- Post Excerpt -->
-    <div class="mdl-color-text--grey-600 mdl-card__supporting-text post_entry-content">
-        
-            浏览器缓存对于现代网页是非常有用的功能，它能将大部分改变频率不大的应用组件缓存到本地以加速用户下次访问时页面的响应时间。
-        
-        &nbsp;&nbsp;&nbsp;
-        <span>
-            <a href="/2018/07/28/cache/" target="_self">阅读全文</a>
-        </span>
-    </div>
-    <!-- Post_entry Info-->
-    <div id="post_entry-info">
-        <div id="post_entry-left-info" class="mdl-card__supporting-text meta mdl-color-text--grey-600 ">
-            <!-- Author Avatar -->
-            <div id="author-avatar">
-                <img src="/img/avater.jpg" width="44px" height="44px" alt="蔡胜龙's avatar">
-            </div>
-            <div>
-                <strong>蔡胜龙</strong>
-                <span>7月 28, 2018</span>
-            </div>
-        </div>
-        <div id="post_entry-right-info">
-          
-              <!-- Category -->
-              <span class="post_entry-category">
-                  <a class="post_category-link" href="/categories/前端/">前端</a>, <a class="post_category-link" href="/categories/前端/技术/">技术</a>
-              </span>
-            
-
-            
-
-            
-
-            <!-- Post Views -->
-            <span class="post_entry-views">
-            </span>
-        </div>
-    </div>
-</div>
-
-            
-            
-        
-    
-        
-            
-                <!-- Paradox Thumbnail -->
-                <div class="post_entry-module mdl-card mdl-shadow--2dp mdl-cell mdl-cell--12-col fade out">
-    <!-- Post Thumbnail -->
-    
-        
-            <!-- Random Thumbnail -->
-            <div class="post_thumbnail-random mdl-card__media mdl-color-text--grey-50">
-        
-    
-
-        <!-- Post Title -->
-        <p class="article-headline-p"><a href="/2018/07/19/muti-webpack/">多页项目的webpack配置</a></p>
-    </div>
-
-    <!-- Post Excerpt -->
-    <div class="mdl-color-text--grey-600 mdl-card__supporting-text post_entry-content">
-        
-            在我们使用vue，angular等框架开发的时候，大多数都是构建单页项目。而且，像这样的框架都有对应的命令一步生成webpack配置（比如vue的v...
-        
-        &nbsp;&nbsp;&nbsp;
-        <span>
-            <a href="/2018/07/19/muti-webpack/" target="_self">阅读全文</a>
-        </span>
-    </div>
-    <!-- Post_entry Info-->
-    <div id="post_entry-info">
-        <div id="post_entry-left-info" class="mdl-card__supporting-text meta mdl-color-text--grey-600 ">
-            <!-- Author Avatar -->
-            <div id="author-avatar">
-                <img src="/img/avater.jpg" width="44px" height="44px" alt="蔡胜龙's avatar">
-            </div>
-            <div>
-                <strong>蔡胜龙</strong>
-                <span>7月 19, 2018</span>
-            </div>
-        </div>
-        <div id="post_entry-right-info">
-          
-              <!-- Category -->
-              <span class="post_entry-category">
-                  <a class="post_category-link" href="/categories/前端/">前端</a>, <a class="post_category-link" href="/categories/前端/技术/">技术</a>
-              </span>
-            
-
-            
-
-            
-
-            <!-- Post Views -->
-            <span class="post_entry-views">
-            </span>
-        </div>
-    </div>
-</div>
-
-            
-            
-        
-    
-        
-            
-                <!-- Paradox Thumbnail -->
-                <div class="post_entry-module mdl-card mdl-shadow--2dp mdl-cell mdl-cell--12-col fade out">
-    <!-- Post Thumbnail -->
-    
-        
-            <!-- Random Thumbnail -->
-            <div class="post_thumbnail-random mdl-card__media mdl-color-text--grey-50">
-        
-    
-
-        <!-- Post Title -->
-        <p class="article-headline-p"><a href="/2018/07/15/bable/">babel-loader，babel-core，babel-polify，babel-plugin-transform-runtime之间的关系</a></p>
-    </div>
-
-    <!-- Post Excerpt -->
-    <div class="mdl-color-text--grey-600 mdl-card__supporting-text post_entry-content">
-        
-            babel-core在npm官网中的解释是：Babel compiler core.
-也就是Babel编译器的核心，因此意味着如果要使...
-        
-        &nbsp;&nbsp;&nbsp;
-        <span>
-            <a href="/2018/07/15/bable/" target="_self">阅读全文</a>
-        </span>
-    </div>
-    <!-- Post_entry Info-->
-    <div id="post_entry-info">
-        <div id="post_entry-left-info" class="mdl-card__supporting-text meta mdl-color-text--grey-600 ">
-            <!-- Author Avatar -->
-            <div id="author-avatar">
-                <img src="/img/avater.jpg" width="44px" height="44px" alt="蔡胜龙's avatar">
-            </div>
-            <div>
-                <strong>蔡胜龙</strong>
-                <span>7月 15, 2018</span>
-            </div>
-        </div>
-        <div id="post_entry-right-info">
-          
-              <!-- Category -->
-              <span class="post_entry-category">
-                  <a class="post_category-link" href="/categories/前端/">前端</a>, <a class="post_category-link" href="/categories/前端/技术/">技术</a>
-              </span>
-            
-
-            
-
-            
-
-            <!-- Post Views -->
-            <span class="post_entry-views">
-            </span>
-        </div>
-    </div>
-</div>
-
-            
-            
-        
-    
-        
-            
-                <!-- Paradox Thumbnail -->
-                <div class="post_entry-module mdl-card mdl-shadow--2dp mdl-cell mdl-cell--12-col fade out">
-    <!-- Post Thumbnail -->
-    
-        
-            <!-- Random Thumbnail -->
-            <div class="post_thumbnail-random mdl-card__media mdl-color-text--grey-50">
-        
-    
-
-        <!-- Post Title -->
-        <p class="article-headline-p"><a href="/2018/07/03/git-pass/">本地仓库每次向github提交代码都需要输入账号密码的解决方法</a></p>
-    </div>
-
-    <!-- Post Excerpt -->
-    <div class="mdl-color-text--grey-600 mdl-card__supporting-text post_entry-content">
-        
-            当我们向github远程仓库push代码的时候可能会出现每次都要求输入账号密码的问题。
-其实会出现这个问题的原因只是因为你在添加ori...
-        
-        &nbsp;&nbsp;&nbsp;
-        <span>
-            <a href="/2018/07/03/git-pass/" target="_self">阅读全文</a>
-        </span>
-    </div>
-    <!-- Post_entry Info-->
-    <div id="post_entry-info">
-        <div id="post_entry-left-info" class="mdl-card__supporting-text meta mdl-color-text--grey-600 ">
-            <!-- Author Avatar -->
-            <div id="author-avatar">
-                <img src="/img/avater.jpg" width="44px" height="44px" alt="蔡胜龙's avatar">
-            </div>
-            <div>
-                <strong>蔡胜龙</strong>
-                <span>7月 03, 2018</span>
-            </div>
-        </div>
-        <div id="post_entry-right-info">
-          
-              <!-- Category -->
-              <span class="post_entry-category">
-                  <a class="post_category-link" href="/categories/前端/">前端</a>, <a class="post_category-link" href="/categories/前端/技术/">技术</a>
-              </span>
-            
-
-            
-
-            
-
-            <!-- Post Views -->
-            <span class="post_entry-views">
-            </span>
-        </div>
-    </div>
-</div>
-
-            
-            
-        
-    
-
-    
-
-    
-        <script type="text/ls-javascript" id="thumbnail-script">
-    var randomNum;
-
-    var locatePost = $('.locate-thumbnail-symbol').next();
-    for(var i = 0; i < 10; i++) {
-        randomNum = Math.floor(Math.random() * 19 + 1);
-
-        locatePost.children('.post_thumbnail-random').attr('id', 'random_thumbnail-'+randomNum);
-        locatePost.children('.post_thumbnail-random').attr('data-original', '/img/random/material-' + randomNum + '.png');
+    $('.post_thumbnail-random').attr('data-original', '/img/random/material-' + randomNum + '.png');
     $('.post_thumbnail-random').addClass('lazy');
-
-        locatePost = locatePost.next();
-    }
 </script>
 
+        
+    
+            <p class="article-headline-p">
+                与浏览器缓存相关的expires，cache-control，last-modified，Etag等头部信息
+            </p>
+        </div>
+
+
+
+
+
+                
+                    <!-- Paradox Post Info -->
+                    <div class="mdl-color-text--grey-700 mdl-card__supporting-text meta">
+
+    <!-- Author Avatar -->
+    <div id="author-avatar">
+        <img src="/img/avater.jpg" width="44px" height="44px" alt="Author Avatar"/>
+    </div>
+    <!-- Author Name & Date -->
+    <div>
+        <strong>蔡胜龙</strong>
+        <span>7月 28, 2018</span>
+    </div>
+
+    <div class="section-spacer"></div>
+
+    <!-- Favorite -->
+    <!--
+        <button id="article-functions-like-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon btn-like">
+            <i class="material-icons" role="presentation">favorite</i>
+            <span class="visuallyhidden">favorites</span>
+        </button>
+    -->
+
+    <!-- Qrcode -->
+    
+
+    <!-- Tags (bookmark) -->
+    
+    <button id="article-functions-viewtags-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
+        <i class="material-icons" role="presentation">bookmark</i>
+        <span class="visuallyhidden">bookmark</span>
+    </button>
+    <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="article-functions-viewtags-button">
+        <li class="mdl-menu__item">
+        <a class="post_tag-link" href="/tags/webpack/">webpack</a></li><li class="mdl-menu__item"><a class="post_tag-link" href="/tags/前端/">前端</a>
+    </ul>
+    
+
+    <!-- Share -->
+    
+        <button id="article-fuctions-share-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
+    <i class="material-icons" role="presentation">share</i>
+    <span class="visuallyhidden">share</span>
+</button>
+<ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="article-fuctions-share-button">
+    
+
+    
+
+    <!-- Share Weibo -->
+    
+        <a class="post_share-link" href="http://service.weibo.com/share/share.php?appkey=&title=与浏览器缓存相关的expires，cache-control，last-modified，Etag等头部信息&url=http://yoursite.com/2018/07/28/cache/index.html&pic=http://yoursite.com/img/favicon.png&searchPic=false&style=simple" target="_blank">
+            <li class="mdl-menu__item">
+                分享到微博
+            </li>
+        </a>
+    
+
+    <!-- Share Twitter -->
+    
+
+    <!-- Share Facebook -->
+    
+
+    <!-- Share Google+ -->
+    
+        <a class="post_share-link" href="https://plus.google.com/share?url=http://yoursite.com/2018/07/28/cache/index.html" target="_blank">
+            <li class="mdl-menu__item">
+                分享到 Google+
+            </li>
+        </a>
+    
+
+    <!-- Share LinkedIn -->
+    
+
+    <!-- Share QQ -->
+    
+        <a class="post_share-link" href="http://connect.qq.com/widget/shareqq/index.html?site=蔡胜龙的博客 | 技术交流平台&title=与浏览器缓存相关的expires，cache-control，last-modified，Etag等头部信息&summary=&pics=http://yoursite.com/img/favicon.png&url=http://yoursite.com/2018/07/28/cache/index.html" target="_blank">
+            <li class="mdl-menu__item">
+                分享到 QQ
+            </li>
+        </a>
+    
+
+    <!-- Share Telegram -->
+    
+        <a class="post_share-link" href="https://telegram.me/share/url?url=http://yoursite.com/2018/07/28/cache/index.html&text=与浏览器缓存相关的expires，cache-control，last-modified，Etag等头部信息" target="_blank">
+            <li class="mdl-menu__item">
+                分享到 Telegram
+            </li>
+        </a>
+    
+</ul>
+
     
 </div>
+
+                
+
+                <!-- Post Content -->
+                <div id="post-content" class="mdl-color-text--grey-700 mdl-card__supporting-text fade out">
+    
+        <p><strong>浏览器缓存对于现代网页是非常有用的功能，它能将大部分改变频率不大的应用组件缓存到本地以加速用户下次访问时页面的响应时间。</strong></p>
+<p>而与浏览器缓存相关的头有 expires，cache-control等等（如标题中提到的）</p>
+<p>这些头信息分别代表什么呢？</p>
+<p>由浅入深。首先来我们来说说条件 GET 请求。</p>
+<p>一般我们向服务器发送http请求获取资源时服务器的响应头中一般会包含如下的一个头部信息：</p>
+<h4 id="Last-Modified-Wed-22-Feb-2018-04-15-54-GMT"><a href="#Last-Modified-Wed-22-Feb-2018-04-15-54-GMT" class="headerlink" title="Last-Modified : Wed, 22 Feb 2018 04:15:54 GMT"></a>Last-Modified : Wed, 22 Feb 2018 04:15:54 GMT</h4><p>这个头部信息相当于告诉浏览器该资源的最近修改时间，浏览器收到响应后会将资源和这个时间缓存起来</p>
+<p>等到下次请求相同资源的时候会在请求头中包含如下信息，以询问浏览器资源是否发生更改：</p>
+<h4 id="If-Modified-Since-Wed-22-Feb-2018-04-15-54-GMT"><a href="#If-Modified-Since-Wed-22-Feb-2018-04-15-54-GMT" class="headerlink" title="If-Modified-Since : Wed, 22 Feb 2018 04:15:54 GMT"></a>If-Modified-Since : Wed, 22 Feb 2018 04:15:54 GMT</h4><p>服务器在收到请求后会与资源的修改最新修改时间进行对比，如果时间匹配，说明资源未发生更改并产生一个304响应，此时浏览器会返回如下头部信息：</p>
+<h4 id="HTTP-1-1-304-Not-Modified"><a href="#HTTP-1-1-304-Not-Modified" class="headerlink" title="HTTP 1.1 304 Not Modified"></a>HTTP 1.1 304 Not Modified</h4><h4 id="Last-Modified-Wed-22-Feb-2018-04-15-54-GMT-1"><a href="#Last-Modified-Wed-22-Feb-2018-04-15-54-GMT-1" class="headerlink" title="Last-Modified : Wed, 22 Feb 2018 04:15:54 GMT"></a>Last-Modified : Wed, 22 Feb 2018 04:15:54 GMT</h4><p>这样服务器就无需向浏览器发送比这个响应大的多的文件本身，这大大节省了网页的响应时间。</p>
+<p>但条件GET请求说到底还是请求了后台（询问资源是否过期），如果组件长时间不会更新，那其实完全无需向后台询问。但是我们如何确定资源是否过期呢？</p>
+<p>这就用到Expires头了：</p>
+<p>在浏览器向后台请求不经常更新的资源时，服务器一般会通过Expires返回一个有效期很长的过期时间：</p>
+<h4 id="Expires-Wed-22-Feb-2019-04-15-54-GMT"><a href="#Expires-Wed-22-Feb-2019-04-15-54-GMT" class="headerlink" title="Expires : Wed, 22 Feb 2019 04:15:54 GMT"></a>Expires : Wed, 22 Feb 2019 04:15:54 GMT</h4><p>浏览器收到响应后会把资源和这个时间缓存起来，等得到下次再次请求相同资源的时候，浏览器会对比这个时间</p>
+<p>如果没有过期，浏览器会直接使用缓存中的资源而不会再次向服务器请求，这样直接就节省了一个http请求，何乐而不为？</p>
+<p>说道这里，Expires看似很完美，但其实还有一个问题。</p>
+<p>那就是Expires头使用一个特定的时间，他要求服务器和客户端的始终严格同步。另外，过期日期需要经常检查，并且一旦这一天到来了，还需要在服务其配置中提供一个新的日期。这当然是不符合程序员的性格，咱们要找的就是一劳永逸的方法！</p>
+<p>于是Cache-Control来到了你的面前。</p>
+<p><strong>HTTP1.1 引入了Cache-control头来克服Expires头的限制</strong>。Cache-control使用max-age指令来指定组件被缓存多久。它以秒为单位定义了一个有效时间：</p>
+<h4 id="Cache-Control-max-age-315360000"><a href="#Cache-Control-max-age-315360000" class="headerlink" title="Cache-Control : max-age=315360000"></a>Cache-Control : max-age=315360000</h4><p>如果从组件被请求开始过去的秒数少于max-age，浏览器就是用缓存中的版本，这样就避免了额外的http请求。</p>
+<p>说完Cache-control，那么ETag又是啥？</p>
+<p><strong>ETag（Entity Tag）实体标签，是唯一标识了一个组件的一个特定版本的字符串</strong>。服务器确认组件是否过期有两种方式，一种就是上面提到的：对比过期时间，另一种就是对比ETag字符串。</p>
+<p>如果服务器启用了ETag，那么响应头中将包含如下请求头：</p>
+<h4 id="ETag-“-10c345b-4cg-459e1c1f-“"><a href="#ETag-“-10c345b-4cg-459e1c1f-“" class="headerlink" title="ETag : “ 10c345b-4cg-459e1c1f “"></a>ETag : “ 10c345b-4cg-459e1c1f “</h4><p>如果你的应用只有一台服务器那么ETag是很有用，并且一般不会带来问题。</p>
+<p>但是，由于不同的服务器下完全相同的资源都不可能拥有相同的ETag，同时如果响应头中同时带有ETag头和Expires头，那么必须保证两者都有效才会使用缓存。因此，一般情况下会更改ETag的配置，保证其在不同的服务器上相同的资源有相同的ETag，或者完全禁用ETag。</p>
+<p>最后谢谢你的耐心阅读，如果此文对你有帮助，可以点个赞哦！</p>
+
+        
+    
+
+    
+</div>
+
+
+                
+
+                <!-- Post Comments -->
+                
+                    
+    <!-- 使用 来必力 -->
+<div id="livere-comment">
+    <div id="lv-container" data-id="city" data-uid="MTAyMC8zODcwNS8xNTIzMw==">
+	<script type="text/ls-javascript" id="livere-comment-js">
+   (function(d, s) {
+       var j, e = d.getElementsByTagName(s)[0];
+       if (typeof LivereTower === 'function') { return; }
+       j = d.createElement(s);
+       j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+       j.async = true;
+       e.parentNode.insertBefore(j, e);
+   })(document, 'script');
+	</script>
+</div>
+</div>
+<style>
+    #livere-comment{
+        background-color: #eee;
+        padding: 2pc;
+    }
+</style>
+
+                
+            </div>
+
+            <!-- Post Prev & Next Nav -->
+            <nav class="material-nav mdl-color-text--grey-50 mdl-cell mdl-cell--12-col">
+    <!-- Prev Nav -->
+    
+        <a href="/2018/08/07/file-chunk/" id="post_nav-newer" class="prev-content">
+            <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-color--white mdl-color-text--grey-900" role="presentation">
+                <i class="material-icons">arrow_back</i>
+            </button>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            新篇
+        </a>
+    
+
+    <!-- Section Spacer -->
+    <div class="section-spacer"></div>
+
+    <!-- Next Nav -->
+    
+        <a href="/2018/07/19/muti-webpack/" id="post_nav-older" class="next-content">
+            旧篇
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-color--white mdl-color-text--grey-900" role="presentation">
+                <i class="material-icons">arrow_forward</i>
+            </button>
+        </a>
+    
+</nav>
+
+        </div>
+    </div>
+
 
 
                     

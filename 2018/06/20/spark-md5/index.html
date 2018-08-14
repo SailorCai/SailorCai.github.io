@@ -45,7 +45,7 @@
     
     <title>
         
-            归档: 2018/7 | 
+            前端通过spark-md5.js计算本地文件md5 | 
         
         蔡胜龙的博客 | 技术交流平台
     </title>
@@ -56,7 +56,7 @@
 
     <meta name="format-detection" content="telephone=no"/>
     <meta name="description" itemprop="description" content="">
-    <meta name="keywords" content="蔡胜龙的博客|前端攻城狮">
+    <meta name="keywords" content="蔡胜龙的博客|前端攻城狮,前端,javascript">
     <meta name="theme-color" content="#0097A7">
 
     <!-- Disable Fucking Bloody Baidu Tranformation -->
@@ -217,7 +217,7 @@
     <!-- WebAPP Icons -->
     <meta name="mobile-web-app-capable" content="yes">
     <meta name="application-name" content="蔡胜龙的博客 | 技术交流平台">
-    <meta name="msapplication-starturl" content="http://yoursite.com/archives/2018/07/">
+    <meta name="msapplication-starturl" content="http://yoursite.com/2018/06/20/spark-md5/">
     <meta name="msapplication-navbutton-color" content="#0097A7">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-title" content="蔡胜龙的博客 | 技术交流平台">
@@ -232,13 +232,16 @@
     
 
     <!-- The Open Graph protocol -->
-    <meta property="og:url" content="http://yoursite.com/archives/2018/07/">
+    <meta property="og:url" content="http://yoursite.com/2018/06/20/spark-md5/">
     <meta property="og:type" content="blog">
-    <meta property="og:title" content="归档: 2018/7 | 蔡胜龙的博客 | 技术交流平台">
+    <meta property="og:title" content="前端通过spark-md5.js计算本地文件md5 | 蔡胜龙的博客 | 技术交流平台">
     <meta property="og:image" content="/img/favicon.png">
     <meta property="og:description" content="">
-    
+    <meta property="og:article:tag" content="前端"> <meta property="og:article:tag" content="javascript"> 
 
+    
+        <meta property="article:published_time" content="Wed Jun 20 2018 15:43:09 GMT+0800">
+        <meta property="article:modified_time" content="Fri Aug 10 2018 20:32:43 GMT+0800">
     
 
     <!-- The Twitter Card protocol -->
@@ -246,13 +249,43 @@
 
     <!-- Add canonical link for SEO -->
     
-        <link rel="canonical" href="http://yoursite.com/archives/2018/07/index.html" />
+        <link rel="canonical" href="http://yoursite.com/2018/06/20/spark-md5/index.html" />
     
 
     <!-- Structured-data for SEO -->
     
         
 
+
+<script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "mainEntityOfPage": "http://yoursite.com/2018/06/20/spark-md5/index.html",
+    "headline": "前端通过spark-md5.js计算本地文件md5",
+    "datePublished": "Wed Jun 20 2018 15:43:09 GMT+0800",
+    "dateModified": "Fri Aug 10 2018 20:32:43 GMT+0800",
+    "author": {
+        "@type": "Person",
+        "name": "蔡胜龙",
+        "image": {
+            "@type": "ImageObject",
+            "url": "/img/avater.jpg"
+        },
+        "description": "Hi, nice to meet you"
+    },
+    "publisher": {
+        "@type": "Organization",
+        "name": "蔡胜龙的博客 | 技术交流平台",
+        "logo": {
+            "@type":"ImageObject",
+            "url": "/img/favicon.png"
+        }
+    },
+    "keywords": ",前端,javascript蔡胜龙的博客|前端攻城狮",
+    "description": "",
+}
+</script>
 
 
     
@@ -286,283 +319,259 @@
                         </button>
                     
 
-                    <!-- Index Module -->
-<div class="material-index mdl-grid">
-    
-    <div class="locate-thumbnail-symbol"></div>
+                    <!-- Post TOC -->
 
-    <!-- Pin on top -->
+    
+    <!-- Back Button -->
+    <!--
+    <div class="material-back" id="backhome-div" tabindex="0">
+        <a class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon"
+           href="#" onclick="window.history.back();return false;"
+           target="_self"
+           role="button"
+           data-upgraded=",MaterialButton,MaterialRipple">
+            <i class="material-icons" role="presentation">arrow_back</i>
+            <span class="mdl-button__ripple-container">
+                <span class="mdl-ripple"></span>
+            </span>
+        </a>
+    </div>
+    -->
+
+
+    <!-- Left aligned menu below button -->
+    
+    
+    <button id="post-toc-trigger-btn"
+        class="mdl-button mdl-js-button mdl-button--icon">
+        <i class="material-icons">format_list_numbered</i>
+    </button>
+
+    <ul class="post-toc-wrap mdl-menu mdl-menu--bottom-left mdl-js-menu mdl-js-ripple-effect" for="post-toc-trigger-btn" style="max-height:80vh; overflow-y:scroll;">
+        <ol class="post-toc"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#背景："><span class="post-toc-number">1.</span> <span class="post-toc-text">背景：</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#使用："><span class="post-toc-number">2.</span> <span class="post-toc-text">使用：</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#首先第一种方法："><span class="post-toc-number">2.1.</span> <span class="post-toc-text">首先第一种方法：</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#接下上第二种方法："><span class="post-toc-number">2.2.</span> <span class="post-toc-text">接下上第二种方法：</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#下载："><span class="post-toc-number">3.</span> <span class="post-toc-text">下载：</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#最后，如果你需要这个工具可以通过npm直接安装，"><span class="post-toc-number">3.1.</span> <span class="post-toc-text">最后，如果你需要这个工具可以通过npm直接安装，</span></a></li></ol></li></ol>
+    </ul>
     
 
-    <!-- Normal Post -->
-    
-        
-            
-                <!-- Paradox Thumbnail -->
-                <div class="post_entry-module mdl-card mdl-shadow--2dp mdl-cell mdl-cell--12-col fade out">
-    <!-- Post Thumbnail -->
+
+
+
+<!-- Layouts -->
+
+    <!-- Post Module -->
+    <div class="material-post_container">
+
+        <div class="material-post mdl-grid">
+            <div class="mdl-card mdl-shadow--4dp mdl-cell mdl-cell--12-col">
+
+                <!-- Post Header(Thumbnail & Title) -->
+                
+    <!-- Paradox Post Header -->
     
         
             <!-- Random Thumbnail -->
             <div class="post_thumbnail-random mdl-card__media mdl-color-text--grey-50">
-        
-    
+            <script type="text/ls-javascript" id="post-thumbnail-script">
+    var randomNum = Math.floor(Math.random() * 19 + 1);
 
-        <!-- Post Title -->
-        <p class="article-headline-p"><a href="/2018/07/28/cache/">与浏览器缓存相关的expires，cache-control，last-modified，Etag等头部信息</a></p>
-    </div>
-
-    <!-- Post Excerpt -->
-    <div class="mdl-color-text--grey-600 mdl-card__supporting-text post_entry-content">
-        
-            浏览器缓存对于现代网页是非常有用的功能，它能将大部分改变频率不大的应用组件缓存到本地以加速用户下次访问时页面的响应时间。
-        
-        &nbsp;&nbsp;&nbsp;
-        <span>
-            <a href="/2018/07/28/cache/" target="_self">阅读全文</a>
-        </span>
-    </div>
-    <!-- Post_entry Info-->
-    <div id="post_entry-info">
-        <div id="post_entry-left-info" class="mdl-card__supporting-text meta mdl-color-text--grey-600 ">
-            <!-- Author Avatar -->
-            <div id="author-avatar">
-                <img src="/img/avater.jpg" width="44px" height="44px" alt="蔡胜龙's avatar">
-            </div>
-            <div>
-                <strong>蔡胜龙</strong>
-                <span>7月 28, 2018</span>
-            </div>
-        </div>
-        <div id="post_entry-right-info">
-          
-              <!-- Category -->
-              <span class="post_entry-category">
-                  <a class="post_category-link" href="/categories/前端/">前端</a>, <a class="post_category-link" href="/categories/前端/技术/">技术</a>
-              </span>
-            
-
-            
-
-            
-
-            <!-- Post Views -->
-            <span class="post_entry-views">
-            </span>
-        </div>
-    </div>
-</div>
-
-            
-            
-        
-    
-        
-            
-                <!-- Paradox Thumbnail -->
-                <div class="post_entry-module mdl-card mdl-shadow--2dp mdl-cell mdl-cell--12-col fade out">
-    <!-- Post Thumbnail -->
-    
-        
-            <!-- Random Thumbnail -->
-            <div class="post_thumbnail-random mdl-card__media mdl-color-text--grey-50">
-        
-    
-
-        <!-- Post Title -->
-        <p class="article-headline-p"><a href="/2018/07/19/muti-webpack/">多页项目的webpack配置</a></p>
-    </div>
-
-    <!-- Post Excerpt -->
-    <div class="mdl-color-text--grey-600 mdl-card__supporting-text post_entry-content">
-        
-            在我们使用vue，angular等框架开发的时候，大多数都是构建单页项目。而且，像这样的框架都有对应的命令一步生成webpack配置（比如vue的v...
-        
-        &nbsp;&nbsp;&nbsp;
-        <span>
-            <a href="/2018/07/19/muti-webpack/" target="_self">阅读全文</a>
-        </span>
-    </div>
-    <!-- Post_entry Info-->
-    <div id="post_entry-info">
-        <div id="post_entry-left-info" class="mdl-card__supporting-text meta mdl-color-text--grey-600 ">
-            <!-- Author Avatar -->
-            <div id="author-avatar">
-                <img src="/img/avater.jpg" width="44px" height="44px" alt="蔡胜龙's avatar">
-            </div>
-            <div>
-                <strong>蔡胜龙</strong>
-                <span>7月 19, 2018</span>
-            </div>
-        </div>
-        <div id="post_entry-right-info">
-          
-              <!-- Category -->
-              <span class="post_entry-category">
-                  <a class="post_category-link" href="/categories/前端/">前端</a>, <a class="post_category-link" href="/categories/前端/技术/">技术</a>
-              </span>
-            
-
-            
-
-            
-
-            <!-- Post Views -->
-            <span class="post_entry-views">
-            </span>
-        </div>
-    </div>
-</div>
-
-            
-            
-        
-    
-        
-            
-                <!-- Paradox Thumbnail -->
-                <div class="post_entry-module mdl-card mdl-shadow--2dp mdl-cell mdl-cell--12-col fade out">
-    <!-- Post Thumbnail -->
-    
-        
-            <!-- Random Thumbnail -->
-            <div class="post_thumbnail-random mdl-card__media mdl-color-text--grey-50">
-        
-    
-
-        <!-- Post Title -->
-        <p class="article-headline-p"><a href="/2018/07/15/bable/">babel-loader，babel-core，babel-polify，babel-plugin-transform-runtime之间的关系</a></p>
-    </div>
-
-    <!-- Post Excerpt -->
-    <div class="mdl-color-text--grey-600 mdl-card__supporting-text post_entry-content">
-        
-            babel-core在npm官网中的解释是：Babel compiler core.
-也就是Babel编译器的核心，因此意味着如果要使...
-        
-        &nbsp;&nbsp;&nbsp;
-        <span>
-            <a href="/2018/07/15/bable/" target="_self">阅读全文</a>
-        </span>
-    </div>
-    <!-- Post_entry Info-->
-    <div id="post_entry-info">
-        <div id="post_entry-left-info" class="mdl-card__supporting-text meta mdl-color-text--grey-600 ">
-            <!-- Author Avatar -->
-            <div id="author-avatar">
-                <img src="/img/avater.jpg" width="44px" height="44px" alt="蔡胜龙's avatar">
-            </div>
-            <div>
-                <strong>蔡胜龙</strong>
-                <span>7月 15, 2018</span>
-            </div>
-        </div>
-        <div id="post_entry-right-info">
-          
-              <!-- Category -->
-              <span class="post_entry-category">
-                  <a class="post_category-link" href="/categories/前端/">前端</a>, <a class="post_category-link" href="/categories/前端/技术/">技术</a>
-              </span>
-            
-
-            
-
-            
-
-            <!-- Post Views -->
-            <span class="post_entry-views">
-            </span>
-        </div>
-    </div>
-</div>
-
-            
-            
-        
-    
-        
-            
-                <!-- Paradox Thumbnail -->
-                <div class="post_entry-module mdl-card mdl-shadow--2dp mdl-cell mdl-cell--12-col fade out">
-    <!-- Post Thumbnail -->
-    
-        
-            <!-- Random Thumbnail -->
-            <div class="post_thumbnail-random mdl-card__media mdl-color-text--grey-50">
-        
-    
-
-        <!-- Post Title -->
-        <p class="article-headline-p"><a href="/2018/07/03/git-pass/">本地仓库每次向github提交代码都需要输入账号密码的解决方法</a></p>
-    </div>
-
-    <!-- Post Excerpt -->
-    <div class="mdl-color-text--grey-600 mdl-card__supporting-text post_entry-content">
-        
-            当我们向github远程仓库push代码的时候可能会出现每次都要求输入账号密码的问题。
-其实会出现这个问题的原因只是因为你在添加ori...
-        
-        &nbsp;&nbsp;&nbsp;
-        <span>
-            <a href="/2018/07/03/git-pass/" target="_self">阅读全文</a>
-        </span>
-    </div>
-    <!-- Post_entry Info-->
-    <div id="post_entry-info">
-        <div id="post_entry-left-info" class="mdl-card__supporting-text meta mdl-color-text--grey-600 ">
-            <!-- Author Avatar -->
-            <div id="author-avatar">
-                <img src="/img/avater.jpg" width="44px" height="44px" alt="蔡胜龙's avatar">
-            </div>
-            <div>
-                <strong>蔡胜龙</strong>
-                <span>7月 03, 2018</span>
-            </div>
-        </div>
-        <div id="post_entry-right-info">
-          
-              <!-- Category -->
-              <span class="post_entry-category">
-                  <a class="post_category-link" href="/categories/前端/">前端</a>, <a class="post_category-link" href="/categories/前端/技术/">技术</a>
-              </span>
-            
-
-            
-
-            
-
-            <!-- Post Views -->
-            <span class="post_entry-views">
-            </span>
-        </div>
-    </div>
-</div>
-
-            
-            
-        
-    
-
-    
-
-    
-        <script type="text/ls-javascript" id="thumbnail-script">
-    var randomNum;
-
-    var locatePost = $('.locate-thumbnail-symbol').next();
-    for(var i = 0; i < 10; i++) {
-        randomNum = Math.floor(Math.random() * 19 + 1);
-
-        locatePost.children('.post_thumbnail-random').attr('id', 'random_thumbnail-'+randomNum);
-        locatePost.children('.post_thumbnail-random').attr('data-original', '/img/random/material-' + randomNum + '.png');
+    $('.post_thumbnail-random').attr('data-original', '/img/random/material-' + randomNum + '.png');
     $('.post_thumbnail-random').addClass('lazy');
-
-        locatePost = locatePost.next();
-    }
 </script>
 
+        
+    
+            <p class="article-headline-p">
+                前端通过spark-md5.js计算本地文件md5
+            </p>
+        </div>
+
+
+
+
+
+                
+                    <!-- Paradox Post Info -->
+                    <div class="mdl-color-text--grey-700 mdl-card__supporting-text meta">
+
+    <!-- Author Avatar -->
+    <div id="author-avatar">
+        <img src="/img/avater.jpg" width="44px" height="44px" alt="Author Avatar"/>
+    </div>
+    <!-- Author Name & Date -->
+    <div>
+        <strong>蔡胜龙</strong>
+        <span>6月 20, 2018</span>
+    </div>
+
+    <div class="section-spacer"></div>
+
+    <!-- Favorite -->
+    <!--
+        <button id="article-functions-like-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon btn-like">
+            <i class="material-icons" role="presentation">favorite</i>
+            <span class="visuallyhidden">favorites</span>
+        </button>
+    -->
+
+    <!-- Qrcode -->
+    
+
+    <!-- Tags (bookmark) -->
+    
+    <button id="article-functions-viewtags-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
+        <i class="material-icons" role="presentation">bookmark</i>
+        <span class="visuallyhidden">bookmark</span>
+    </button>
+    <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="article-functions-viewtags-button">
+        <li class="mdl-menu__item">
+        <a class="post_tag-link" href="/tags/javascript/">javascript</a></li><li class="mdl-menu__item"><a class="post_tag-link" href="/tags/前端/">前端</a>
+    </ul>
+    
+
+    <!-- Share -->
+    
+        <button id="article-fuctions-share-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
+    <i class="material-icons" role="presentation">share</i>
+    <span class="visuallyhidden">share</span>
+</button>
+<ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="article-fuctions-share-button">
+    
+
+    
+
+    <!-- Share Weibo -->
+    
+        <a class="post_share-link" href="http://service.weibo.com/share/share.php?appkey=&title=前端通过spark-md5.js计算本地文件md5&url=http://yoursite.com/2018/06/20/spark-md5/index.html&pic=http://yoursite.com/img/favicon.png&searchPic=false&style=simple" target="_blank">
+            <li class="mdl-menu__item">
+                分享到微博
+            </li>
+        </a>
+    
+
+    <!-- Share Twitter -->
+    
+
+    <!-- Share Facebook -->
+    
+
+    <!-- Share Google+ -->
+    
+        <a class="post_share-link" href="https://plus.google.com/share?url=http://yoursite.com/2018/06/20/spark-md5/index.html" target="_blank">
+            <li class="mdl-menu__item">
+                分享到 Google+
+            </li>
+        </a>
+    
+
+    <!-- Share LinkedIn -->
+    
+
+    <!-- Share QQ -->
+    
+        <a class="post_share-link" href="http://connect.qq.com/widget/shareqq/index.html?site=蔡胜龙的博客 | 技术交流平台&title=前端通过spark-md5.js计算本地文件md5&summary=&pics=http://yoursite.com/img/favicon.png&url=http://yoursite.com/2018/06/20/spark-md5/index.html" target="_blank">
+            <li class="mdl-menu__item">
+                分享到 QQ
+            </li>
+        </a>
+    
+
+    <!-- Share Telegram -->
+    
+        <a class="post_share-link" href="https://telegram.me/share/url?url=http://yoursite.com/2018/06/20/spark-md5/index.html&text=前端通过spark-md5.js计算本地文件md5" target="_blank">
+            <li class="mdl-menu__item">
+                分享到 Telegram
+            </li>
+        </a>
+    
+</ul>
+
     
 </div>
+
+                
+
+                <!-- Post Content -->
+                <div id="post-content" class="mdl-color-text--grey-700 mdl-card__supporting-text fade out">
+    
+        <h3 id="背景："><a href="#背景：" class="headerlink" title="背景："></a>背景：</h3><p>说到本人第一次使用spark-md5.js还是差不多一年以前的时候了，当时后台老大说要搞一个文件分片上传的功能。我当时就心想：what？啥是文件分片上传，完全没听过好吗？<br>至于我当时内心那个慌就不多描述了，总之文件分片上传需要一个识别文件的唯一标识，而md5是非常合适的。spark-md5.js就是前端在文件上传前在本地计算md5的很可靠的方案<br>spark-md5.js是外国人写的，如果英文底子好且想了解更多信息可以到npm网站了解：<a href="https://www.npmjs.com/package/spark-md5" target="_blank" rel="noopener">https://www.npmjs.com/package/spark-md5</a></p>
+<h3 id="使用："><a href="#使用：" class="headerlink" title="使用："></a>使用：</h3><p>首先要做的当然是在html文件中引入spark-md5.js咯，根据自己的需求可以引入压缩版或者开发版</p>
+<p>在此之前必须说明，这里用到了html5提供的FileReader接口，目前实现了这个接口的浏览器有FireFox3.6+ 、chrome6+、IE10+，因此如果需要更多的兼容的话、抱歉，我目前也没有找到好的方法<br>关于FileReader,这里有一篇高质量的博文可以了解一下：<a href="https://blog.csdn.net/jackfrued/article/details/8967667" target="_blank" rel="noopener">https://blog.csdn.net/jackfrued/article/details/8967667</a></p>
+<p>这里提供了两个方法；一种是用SparkMD5.hashBinary( ) 直接将整个文件的二进制码传入直接返回文件的md5、这种方法对于小文件会比较有优势——简单并且速度快。<br>另一种方法是利用js中File对象的slice( )方法（File.prototype.slice( )）将文件分片后逐个传入spark.appendBinary( )方法来计算、最后通过spark.end( )方法输出结果，很明显，这种方法对于大型文件会非常有利——不容易出错，并且能够提供计算的进度信息</p>
+<p>我们开始吧，接下来上代码：</p>
+<h4 id="首先第一种方法："><a href="#首先第一种方法：" class="headerlink" title="首先第一种方法："></a>首先第一种方法：</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line">var running = <span class="literal">false</span>;    //running用于判断是否正在计算md5</span><br><span class="line"><span class="keyword">function</span> doNormalTest( input ) &#123;    //这里假设直接将文件选择框的dom引用传入</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">if</span> (running) &#123;    // 如果正在计算、不允许开始下一次计算</span><br><span class="line">        <span class="built_in">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    var fileReader = new FileReader(),    //创建FileReader实例</span><br><span class="line">        time;</span><br><span class="line"></span><br><span class="line">    fileReader.onload = <span class="keyword">function</span> (e) &#123;    //FileReader的load事件，当文件读取完毕时触发</span><br><span class="line">        running = <span class="literal">false</span>;</span><br><span class="line"></span><br><span class="line">        // e.target指向上面的fileReader实例</span><br><span class="line">        <span class="keyword">if</span> (file.size != e.target.result.length) &#123;    //如果两者不一致说明读取出错</span><br><span class="line">           alert(<span class="string">"ERROR:Browser reported success but could not read the file until the end."</span>);</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            console.log(Finished loading!success!!);</span><br><span class="line">             <span class="built_in">return</span> SparkMD5.hashBinary(e.target.result);    //计算md5并返回结果</span><br><span class="line">             </span><br><span class="line">        &#125;</span><br><span class="line">    &#125;;</span><br><span class="line"></span><br><span class="line">    fileReader.onerror = <span class="function"><span class="title">function</span></span> () &#123;    //如果读取文件出错，取消读取状态并弹框报错</span><br><span class="line">        running = <span class="literal">false</span>;</span><br><span class="line">        alert(<span class="string">"ERROR:FileReader onerror was triggered, maybe the browser aborted due to high memory usage."</span>);</span><br><span class="line">    &#125;;</span><br><span class="line"></span><br><span class="line">    running = <span class="literal">true</span>;</span><br><span class="line">    fileReader.readAsBinaryString( input.files[0] );    //通过fileReader读取文件二进制码</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<h4 id="接下上第二种方法："><a href="#接下上第二种方法：" class="headerlink" title="接下上第二种方法："></a>接下上第二种方法：</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> doIncrementalTest( input ) &#123;    //这里假设直接将文件选择框的dom引用传入</span><br><span class="line">    <span class="keyword">if</span> (running) &#123;</span><br><span class="line">        <span class="built_in">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    //这里需要用到File的slice( )方法，以下是兼容写法</span><br><span class="line">    var blobSlice = File.prototype.slice || File.prototype.mozSlice || File.prototype.webkitSlice,</span><br><span class="line">        file = input.files[0],</span><br><span class="line">        chunkSize = 2097152,                           // 以每片2MB大小来逐次读取</span><br><span class="line">        chunks = Math.ceil(file.size / chunkSize),</span><br><span class="line">        currentChunk = 0,</span><br><span class="line">        spark = new SparkMD5(),    //创建SparkMD5的实例</span><br><span class="line">        time,</span><br><span class="line">        fileReader = new FileReader();</span><br><span class="line"></span><br><span class="line">    fileReader.onload = <span class="keyword">function</span> (e) &#123;</span><br><span class="line"></span><br><span class="line">        console(<span class="string">"Read chunk number (currentChunk + 1) of  chunks "</span>);</span><br><span class="line"></span><br><span class="line">        spark.appendBinary(e.target.result);                 // append array buffer</span><br><span class="line">        currentChunk += 1;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> (currentChunk &lt; chunks) &#123;</span><br><span class="line">            loadNext();</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            running = <span class="literal">false</span>;</span><br><span class="line">            console.log(<span class="string">"Finished loading!"</span>);</span><br><span class="line">            <span class="built_in">return</span> spark.end();     // 完成计算，返回结果</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;;</span><br><span class="line"></span><br><span class="line">    fileReader.onerror = <span class="function"><span class="title">function</span></span> () &#123;</span><br><span class="line">        running = <span class="literal">false</span>;</span><br><span class="line">        console.log(<span class="string">"something went wrong"</span>);</span><br><span class="line">    &#125;;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">function</span> <span class="function"><span class="title">loadNext</span></span>() &#123;</span><br><span class="line">        var start = currentChunk * chunkSize,</span><br><span class="line">            end = start + chunkSize &gt;= file.size ? file.size : start + chunkSize;</span><br><span class="line"></span><br><span class="line">        fileReader.readAsBinaryString(blobSlice.call(file, start, end));</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    running = <span class="literal">true</span>;</span><br><span class="line">    loadNext();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>接下来你只要在input的onchange事件处理程序中调用doNormalTest或doIncrementalTest方法，并将input元素的dom节点传入就可以了</p>
+<p>除此之外，作者在他的demo里面也有使用的详细实例。如果觉得不明白可以直接通过下面的下载方法下载后看demo</p>
+<h3 id="下载："><a href="#下载：" class="headerlink" title="下载："></a>下载：</h3><h4 id="最后，如果你需要这个工具可以通过npm直接安装，"><a href="#最后，如果你需要这个工具可以通过npm直接安装，" class="headerlink" title="最后，如果你需要这个工具可以通过npm直接安装，"></a>最后，如果你需要这个工具可以通过npm直接安装，</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ npm i spark-md5</span><br></pre></td></tr></table></figure>
+<p>或者到作者的github上直接下载：<br><a href="https://github.com/satazor/js-spark-md5" target="_blank" rel="noopener">https://github.com/satazor/js-spark-md5</a></p>
+
+        
+    
+
+    
+</div>
+
+
+                
+
+                <!-- Post Comments -->
+                
+                    
+    <!-- 使用 来必力 -->
+<div id="livere-comment">
+    <div id="lv-container" data-id="city" data-uid="MTAyMC8zODcwNS8xNTIzMw==">
+	<script type="text/ls-javascript" id="livere-comment-js">
+   (function(d, s) {
+       var j, e = d.getElementsByTagName(s)[0];
+       if (typeof LivereTower === 'function') { return; }
+       j = d.createElement(s);
+       j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+       j.async = true;
+       e.parentNode.insertBefore(j, e);
+   })(document, 'script');
+	</script>
+</div>
+</div>
+<style>
+    #livere-comment{
+        background-color: #eee;
+        padding: 2pc;
+    }
+</style>
+
+                
+            </div>
+
+            <!-- Post Prev & Next Nav -->
+            <nav class="material-nav mdl-color-text--grey-50 mdl-cell mdl-cell--12-col">
+    <!-- Prev Nav -->
+    
+        <a href="/2018/06/26/zhishixq/" id="post_nav-newer" class="prev-content">
+            <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-color--white mdl-color-text--grey-900" role="presentation">
+                <i class="material-icons">arrow_back</i>
+            </button>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            新篇
+        </a>
+    
+
+    <!-- Section Spacer -->
+    <div class="section-spacer"></div>
+
+    <!-- Next Nav -->
+    
+        <a href="/2017/09/20/jq-click/" id="post_nav-older" class="next-content">
+            旧篇
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-color--white mdl-color-text--grey-900" role="presentation">
+                <i class="material-icons">arrow_forward</i>
+            </button>
+        </a>
+    
+</nav>
+
+        </div>
+    </div>
+
 
 
                     
