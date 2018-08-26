@@ -499,8 +499,27 @@
 <h3 id="配置："><a href="#配置：" class="headerlink" title="配置："></a>配置：</h3><p>首先打开apache的配置文件httpd.conf，去掉#Include conf/extra/htttpd-vhosts.conf前面的#号以开启虚拟主机功能<br><img src="wamp3.png" alt=""><br><img src="wamp4.png" alt=""></p>
 <p>（你也可以在wamp安装目录的路径下找到httpd.conf文件，比如我的路径是D:\wamp\bin\apache\Apache2.4.4\conf）</p>
 <p>接下来打开httpd-vhosts.conf文件，将下面的配置信息添加到文件的最后面即可</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">&lt;VirtualHost *:80&gt;</span><br><span class="line">    ServerAdmin webmaster@dummy-host2.example.com</span><br><span class="line">    DocumentRoot <span class="string">"D:/my_project"</span></span><br><span class="line">    ServerName local.oa.com</span><br><span class="line">    ServerAlias local.all.oa.com test.oa.com</span><br><span class="line">    ErrorLog <span class="string">"logs/dummy-host2.example.com-error.log"</span></span><br><span class="line">    CustomLog <span class="string">"logs/dummy-host2.example.com-access.log"</span> common</span><br><span class="line">    &lt;Directory <span class="string">"D:/my_project/"</span>&gt;</span><br><span class="line">    ProxyPass / http://10.121.104.134/cgi-bin</span><br><span class="line">    ProxyPassReverse / http://10.121.104.134/cgi-bin</span><br><span class="line">    ProxyPreserveHost On</span><br><span class="line">    Options Indexes FollowSymLinks Includes</span><br><span class="line">    AllowOverride All</span><br><span class="line">    Order Deny,Allow</span><br><span class="line">    Allow from all</span><br><span class="line">    &lt;/Directory&gt;</span><br><span class="line">&lt;/VirtualHost&gt;</span><br></pre></td></tr></table></figure>
-<h3 id="配置说明："><a href="#配置说明：" class="headerlink" title="配置说明："></a>配置说明：</h3><p><strong>1.DocumentRoot</strong>：服务器访问的文件根路径，不需要带结尾斜杠<br><strong>2.<directory></directory></strong>：用于包裹一组命令，这组命令只对这个指令后面跟的的路径（这里是D:/my_project/）有效，一般和DocumentRoot一致、但是结果要带斜杠<br><strong>3.ServerName</strong>：就是你要代理的域名<br><strong>4.ServerAlias</strong>：代理域名的别名，可以同时添加过个，用空格隔开<br><strong>5.proxyPass</strong>：该指令可以将远程服务器映射到本地服务器的URL空间；本地的服务器并不是扮演传统意义上的代理服务器的角色，而是表现为远程服务器的一个镜像。此本地服务器常被成为反向代理（reversed proxy）或者是网关（gateway）。路径是指本地虚拟路径的名字；url指远程服务器的一个部分URL，不能包含查询字符串。<br>ProxyPass后面跟的值就是你要代理的URL，但是把域名换成域名ip地址了。那么如何获得域名的ip地址呢？我们拿baidu.com来说。打开windows命令行，执行如下命令：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ nslookup baidu.com</span><br></pre></td></tr></table></figure></p>
+<pre><code class="bash">&lt;VirtualHost *:80&gt;
+    ServerAdmin webmaster@dummy-host2.example.com
+    DocumentRoot &quot;D:/my_project&quot;
+    ServerName local.oa.com
+    ServerAlias local.all.oa.com test.oa.com
+    ErrorLog &quot;logs/dummy-host2.example.com-error.log&quot;
+    CustomLog &quot;logs/dummy-host2.example.com-access.log&quot; common
+    &lt;Directory &quot;D:/my_project/&quot;&gt;
+    ProxyPass / http://10.121.104.134/cgi-bin
+    ProxyPassReverse / http://10.121.104.134/cgi-bin
+    ProxyPreserveHost On
+    Options Indexes FollowSymLinks Includes
+    AllowOverride All
+    Order Deny,Allow
+    Allow from all
+    &lt;/Directory&gt;
+&lt;/VirtualHost&gt;
+</code></pre>
+<h3 id="配置说明："><a href="#配置说明：" class="headerlink" title="配置说明："></a>配置说明：</h3><p><strong>1.DocumentRoot</strong>：服务器访问的文件根路径，不需要带结尾斜杠<br><strong>2.<directory></directory></strong>：用于包裹一组命令，这组命令只对这个指令后面跟的的路径（这里是D:/my_project/）有效，一般和DocumentRoot一致、但是结果要带斜杠<br><strong>3.ServerName</strong>：就是你要代理的域名<br><strong>4.ServerAlias</strong>：代理域名的别名，可以同时添加过个，用空格隔开<br><strong>5.proxyPass</strong>：该指令可以将远程服务器映射到本地服务器的URL空间；本地的服务器并不是扮演传统意义上的代理服务器的角色，而是表现为远程服务器的一个镜像。此本地服务器常被成为反向代理（reversed proxy）或者是网关（gateway）。路径是指本地虚拟路径的名字；url指远程服务器的一个部分URL，不能包含查询字符串。<br>ProxyPass后面跟的值就是你要代理的URL，但是把域名换成域名ip地址了。那么如何获得域名的ip地址呢？我们拿baidu.com来说。打开windows命令行，执行如下命令：</p>
+<pre><code class="bash">  $ nslookup baidu.com
+</code></pre>
 <p><img src="wamp5.png" alt=""><br>图中第一个红框中的值是远程服务器的ip地址，而我们要用的是第二个红框中的值，也就是域名的ip地址</p>
 <p>6.ProxyReverse： ProxyPassReverse 的配置总是和ProxyPass 一致，<br>它的作用在于反向代理，如果响应中有302重定向，ProxyPassReverse就派上用场。<br>举例说明，假设用户访问<a href="http://www.test.com/exam.php，" target="_blank" rel="noopener">http://www.test.com/exam.php，</a> 通过转发交给<a href="http://192.168.100.22/exam.php" target="_blank" rel="noopener">http://192.168.100.22/exam.php</a> 处理，假定exam.php处理的结果是实现redirect到login.php(使用相对路径,即省略了域名信息)，如果没有配置 反向代理，客户端收到的请求响应是重定向操作，并且重定向目的url为 <a href="http://192.168.100.22/login.php" target="_blank" rel="noopener">http://192.168.100.22/login.php</a> ， 而这个地址只是代理服务器能访问到的，可想而知，客户端肯定是打不开的，反之如果配置了反向代理，则会在转交HTTP重定向应答到客户端之前调整它为 <a href="http://www.test.com/login.php，" target="_blank" rel="noopener">http://www.test.com/login.php，</a> 即是在原请求之后追加上了redirect的路径。当客户端再次请求 <a href="http://www.test.com/login.php，" target="_blank" rel="noopener">http://www.test.com/login.php，</a> 代理服务器再次工作把其转发到 <a href="http://192.168.100.22/login.php。" target="_blank" rel="noopener">http://192.168.100.22/login.php。</a>  客户端到服务器称之为正向代理，那服务器到客户端就叫反向代理 httpd.conf 的修改例子, 可以放到VirtualHost节点配置里面</p>
 <p>以上ProxyPass和ProxyReserve的解释来自另外一篇博客，有兴趣可以阅读一下，原文链接：<a href="https://blog.csdn.net/u011277123/article/details/77165137" target="_blank" rel="noopener">https://blog.csdn.net/u011277123/article/details/77165137</a></p>
@@ -669,7 +688,7 @@
             </a>
             <ul class="dropdown-menu">
             <li>
-                <a class="sidebar_archives-link" href="/archives/2018/08/">八月 2018<span class="sidebar_archives-count">4</span></a></li><li><a class="sidebar_archives-link" href="/archives/2018/07/">七月 2018<span class="sidebar_archives-count">4</span></a></li><li><a class="sidebar_archives-link" href="/archives/2018/06/">六月 2018<span class="sidebar_archives-count">5</span></a></li><li><a class="sidebar_archives-link" href="/archives/2017/09/">九月 2017<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/archives/2017/07/">七月 2017<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/archives/2017/04/">四月 2017<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/archives/2015/04/">四月 2015<span class="sidebar_archives-count">1</span></a>
+                <a class="sidebar_archives-link" href="/archives/2018/08/">八月 2018<span class="sidebar_archives-count">5</span></a></li><li><a class="sidebar_archives-link" href="/archives/2018/07/">七月 2018<span class="sidebar_archives-count">4</span></a></li><li><a class="sidebar_archives-link" href="/archives/2018/06/">六月 2018<span class="sidebar_archives-count">5</span></a></li><li><a class="sidebar_archives-link" href="/archives/2017/09/">九月 2017<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/archives/2017/07/">七月 2017<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/archives/2017/04/">四月 2017<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/archives/2015/04/">四月 2015<span class="sidebar_archives-count">1</span></a>
             </ul>
         </li>
         
@@ -687,7 +706,7 @@
             </a>
             <ul class="dropdown-menu">
                 <li>
-                <a class="sidebar_archives-link" href="/categories/前端/">前端<span class="sidebar_archives-count">14</span></a></li><li><a class="sidebar_archives-link" href="/categories/前端/技术/">技术<span class="sidebar_archives-count">13</span></a></li><li><a class="sidebar_archives-link" href="/categories/前端/面试/">面试<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/categories/随笔/">随笔<span class="sidebar_archives-count">2</span></a>
+                <a class="sidebar_archives-link" href="/categories/前端/">前端<span class="sidebar_archives-count">15</span></a></li><li><a class="sidebar_archives-link" href="/categories/前端/技术/">技术<span class="sidebar_archives-count">14</span></a></li><li><a class="sidebar_archives-link" href="/categories/前端/面试/">面试<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/categories/随笔/">随笔<span class="sidebar_archives-count">2</span></a>
             </ul>
         </li>
         
@@ -711,7 +730,7 @@
         <li>
             <a href="/archives">
                 文章总数
-                <span class="sidebar-badge">17</span>
+                <span class="sidebar-badge">18</span>
             </a>
         </li>
         
@@ -912,6 +931,10 @@ It will not impact the appearance and can give developers a lot of support :)
 <!-- Import prettify js  -->
 
 
+    
+        <script>lsloader.load("hanabi","/js/hanabi-browser-bundle.js?5+2z7ZZmFuZK5IcimlZbxw==", true)</script>
+    
+
 
 <!-- Window Load -->
 <!-- add class for prettify -->
@@ -922,6 +945,18 @@ It will not impact the appearance and can give developers a lot of support :)
     });
 
     
+    
+        
+        
+            
+                
+                    HanabiBrowser.putColor('#000');
+                
+                    HanabiBrowser.putColor('#666');
+                
+            
+        
+        HanabiBrowser.start('pre code',true);
     
 </script>
 

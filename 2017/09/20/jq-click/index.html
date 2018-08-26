@@ -488,7 +488,10 @@
 <p>问题出现的场景是：当某个元素的点击事件需要经过判断后才触发时——也就是在点击后需要延迟一定时间的情况下，click()或者trigger()方法无法再触发click事件<br>比如一个&lt; input type=”file”&gt;元素，如下图：<br><img src="jq_click1.png" alt=""></p>
 <p>如果我们要在点击‘判断权限’按钮后发送一个请求到后台，并在确认权限后用click()或trigger(‘click’)触发&lt; input type=”file”&gt;元素的click来选择文件。那么很有可能在请求返回后完全触发不了&lt; input type=”file”&gt;元素的click事件，也不能选择文件。</p>
 <p>几次遇到这种情况，后来我用setTimeout();模拟了类似的情况。代码如下：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">setTimeout(<span class="function"><span class="title">function</span></span>()&#123;</span><br><span class="line">    $(<span class="string">".fileInput"</span>).click();</span><br><span class="line">&#125;, 1000);</span><br></pre></td></tr></table></figure>
+<pre><code class="bash">  setTimeout(function(){
+      $(&quot;.fileInput&quot;).click();
+  }, 1000);
+</code></pre>
 <p>通过运行以上js代码我发现，只要延时超过1s，click事件就触发不了。想了很久没有想通为什么，也没有研究过jquery源码（当然同样的情况可能在使用原生方法模拟click事件时也存在）。<br>有没有知道的同学来交流一下。</p>
 
         
@@ -638,7 +641,7 @@
             </a>
             <ul class="dropdown-menu">
             <li>
-                <a class="sidebar_archives-link" href="/archives/2018/08/">八月 2018<span class="sidebar_archives-count">4</span></a></li><li><a class="sidebar_archives-link" href="/archives/2018/07/">七月 2018<span class="sidebar_archives-count">4</span></a></li><li><a class="sidebar_archives-link" href="/archives/2018/06/">六月 2018<span class="sidebar_archives-count">5</span></a></li><li><a class="sidebar_archives-link" href="/archives/2017/09/">九月 2017<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/archives/2017/07/">七月 2017<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/archives/2017/04/">四月 2017<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/archives/2015/04/">四月 2015<span class="sidebar_archives-count">1</span></a>
+                <a class="sidebar_archives-link" href="/archives/2018/08/">八月 2018<span class="sidebar_archives-count">5</span></a></li><li><a class="sidebar_archives-link" href="/archives/2018/07/">七月 2018<span class="sidebar_archives-count">4</span></a></li><li><a class="sidebar_archives-link" href="/archives/2018/06/">六月 2018<span class="sidebar_archives-count">5</span></a></li><li><a class="sidebar_archives-link" href="/archives/2017/09/">九月 2017<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/archives/2017/07/">七月 2017<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/archives/2017/04/">四月 2017<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/archives/2015/04/">四月 2015<span class="sidebar_archives-count">1</span></a>
             </ul>
         </li>
         
@@ -656,7 +659,7 @@
             </a>
             <ul class="dropdown-menu">
                 <li>
-                <a class="sidebar_archives-link" href="/categories/前端/">前端<span class="sidebar_archives-count">14</span></a></li><li><a class="sidebar_archives-link" href="/categories/前端/技术/">技术<span class="sidebar_archives-count">13</span></a></li><li><a class="sidebar_archives-link" href="/categories/前端/面试/">面试<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/categories/随笔/">随笔<span class="sidebar_archives-count">2</span></a>
+                <a class="sidebar_archives-link" href="/categories/前端/">前端<span class="sidebar_archives-count">15</span></a></li><li><a class="sidebar_archives-link" href="/categories/前端/技术/">技术<span class="sidebar_archives-count">14</span></a></li><li><a class="sidebar_archives-link" href="/categories/前端/面试/">面试<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/categories/随笔/">随笔<span class="sidebar_archives-count">2</span></a>
             </ul>
         </li>
         
@@ -680,7 +683,7 @@
         <li>
             <a href="/archives">
                 文章总数
-                <span class="sidebar-badge">17</span>
+                <span class="sidebar-badge">18</span>
             </a>
         </li>
         
@@ -881,6 +884,10 @@ It will not impact the appearance and can give developers a lot of support :)
 <!-- Import prettify js  -->
 
 
+    
+        <script>lsloader.load("hanabi","/js/hanabi-browser-bundle.js?5+2z7ZZmFuZK5IcimlZbxw==", true)</script>
+    
+
 
 <!-- Window Load -->
 <!-- add class for prettify -->
@@ -891,6 +898,18 @@ It will not impact the appearance and can give developers a lot of support :)
     });
 
     
+    
+        
+        
+            
+                
+                    HanabiBrowser.putColor('#000');
+                
+                    HanabiBrowser.putColor('#666');
+                
+            
+        
+        HanabiBrowser.start('pre code',true);
     
 </script>
 

@@ -488,10 +488,47 @@
 <p>单页项目和多页项目的区别在于单页项目所有的js，css等资源只需要在入口html文件中引入，你甚至都不需要额外配置，像html-webpack-plugin这样的插件自动就帮你把js和css插入了到入index.html中了。</p>
 <p>而多页项目下每个页面除了有部分共享资源外，还需要引入每个页面单独的js，css等文件。</p>
 <p>面对这个区别，关键就在于html-webpack-plugin插件的配置。</p>
-<p>首先我们假设所有的页面入口文件都在 src/html/ 下，这样我们可以通过nodejs的fs模块同步读取该目录下的所有文件的名字：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">let</span> htmlArr = fs.readdirSync(path.resolve(__dirname, <span class="string">'src/html'</span>));</span><br></pre></td></tr></table></figure></p>
+<p>首先我们假设所有的页面入口文件都在 src/html/ 下，这样我们可以通过nodejs的fs模块同步读取该目录下的所有文件的名字：</p>
+<pre><code class="bash">let htmlArr = fs.readdirSync(path.resolve(__dirname, &#39;src/html&#39;));
+</code></pre>
 <p>htmlArr中将会保存一个html目录下所有文件名的一个数组，然后我们通过遍历这个数组来获取webpack的entry配置对象和html-webpack-plugin的配置对象：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">let</span> entrys = &#123;&#125;;</span><br><span class="line"><span class="built_in">let</span> htmlPlugins = [];</span><br><span class="line"> </span><br><span class="line"><span class="keyword">for</span>(<span class="built_in">let</span> item of htmlArr)&#123;</span><br><span class="line">  //我们只需要.html前面的文件名</span><br><span class="line">  <span class="built_in">let</span> name = item.split(<span class="string">'.html'</span>)[0];</span><br><span class="line">  htmlPlugins.push(new WebpackHtmlPlugin(&#123;</span><br><span class="line">    filename: item,</span><br><span class="line">    template: path.resolve(__dirname, `src/html/<span class="variable">$&#123;item&#125;</span>`),</span><br><span class="line">    //common代表公共模块，name就是html对应的同名js文件</span><br><span class="line">    //这个配置将会自动在生成的html中插入你指定的js</span><br><span class="line">    chunks: [<span class="string">'common'</span>, name]</span><br><span class="line">  &#125;));</span><br><span class="line">  //配置入口</span><br><span class="line">  entrys[name] = `./src/js/<span class="variable">$&#123;name&#125;</span>.js`;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-<p>接下来在webpack配置中传入上面生成的entrys和htmlPlugins配置对象：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">module.exports = merge(base, &#123;</span><br><span class="line">  //传入entry配置</span><br><span class="line">  entry: entrys,</span><br><span class="line">  devtool: <span class="string">"cheap-module-eval-source-map"</span>,</span><br><span class="line">  devServer: &#123;</span><br><span class="line">    contentBase: path.join(__dirname, <span class="string">"dist"</span>),</span><br><span class="line">    compress: <span class="literal">true</span>,</span><br><span class="line">    port: 8080,</span><br><span class="line">    //hot: <span class="literal">true</span>,</span><br><span class="line">    index: <span class="string">'index.html'</span>,</span><br><span class="line">    open: <span class="literal">true</span></span><br><span class="line">  &#125;,</span><br><span class="line">  plugins: [</span><br><span class="line">    //传入html-webpack-plugin配置对象</span><br><span class="line">    ...htmlPlugins,</span><br><span class="line">  ]</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure></p>
+<pre><code class="bash">let entrys = {};
+let htmlPlugins = [];
+
+for(let item of htmlArr){
+  //我们只需要.html前面的文件名
+  let name = item.split(&#39;.html&#39;)[0];
+  htmlPlugins.push(new WebpackHtmlPlugin({
+    filename: item,
+    template: path.resolve(__dirname, `src/html/${item}`),
+    //common代表公共模块，name就是html对应的同名js文件
+    //这个配置将会自动在生成的html中插入你指定的js
+    chunks: [&#39;common&#39;, name]
+  }));
+  //配置入口
+  entrys[name] = `./src/js/${name}.js`;
+};
+</code></pre>
+<p>接下来在webpack配置中传入上面生成的entrys和htmlPlugins配置对象：</p>
+<pre><code class="bash">module.exports = merge(base, {
+  //传入entry配置
+  entry: entrys,
+  devtool: &quot;cheap-module-eval-source-map&quot;,
+  devServer: {
+    contentBase: path.join(__dirname, &quot;dist&quot;),
+    compress: true,
+    port: 8080,
+    //hot: true,
+    index: &#39;index.html&#39;,
+    open: true
+  },
+  plugins: [
+    //传入html-webpack-plugin配置对象
+    ...htmlPlugins,
+  ]
+});
+
+</code></pre>
 <p>以上配置是我开发环境下的配置，生产环境下内容会多一点点。配置好之后编译，你就就会发现html-webpack-plugin为你生成了多个页面入口html：<br><img src="muti_webpack1.png" alt=""></p>
 <p>其中一个比较关键的地方除了html-webpack-plugin的配置外就是使用node的fs模块同步读取html文件家中所有文件的名字，这样你只要在文件夹中新增一个页面入口webpack就能自动读取到：</p>
 <p>当然这都是些基础配置，不过已经可以拿来用了。</p>
@@ -644,7 +681,7 @@
             </a>
             <ul class="dropdown-menu">
             <li>
-                <a class="sidebar_archives-link" href="/archives/2018/08/">八月 2018<span class="sidebar_archives-count">4</span></a></li><li><a class="sidebar_archives-link" href="/archives/2018/07/">七月 2018<span class="sidebar_archives-count">4</span></a></li><li><a class="sidebar_archives-link" href="/archives/2018/06/">六月 2018<span class="sidebar_archives-count">5</span></a></li><li><a class="sidebar_archives-link" href="/archives/2017/09/">九月 2017<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/archives/2017/07/">七月 2017<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/archives/2017/04/">四月 2017<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/archives/2015/04/">四月 2015<span class="sidebar_archives-count">1</span></a>
+                <a class="sidebar_archives-link" href="/archives/2018/08/">八月 2018<span class="sidebar_archives-count">5</span></a></li><li><a class="sidebar_archives-link" href="/archives/2018/07/">七月 2018<span class="sidebar_archives-count">4</span></a></li><li><a class="sidebar_archives-link" href="/archives/2018/06/">六月 2018<span class="sidebar_archives-count">5</span></a></li><li><a class="sidebar_archives-link" href="/archives/2017/09/">九月 2017<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/archives/2017/07/">七月 2017<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/archives/2017/04/">四月 2017<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/archives/2015/04/">四月 2015<span class="sidebar_archives-count">1</span></a>
             </ul>
         </li>
         
@@ -662,7 +699,7 @@
             </a>
             <ul class="dropdown-menu">
                 <li>
-                <a class="sidebar_archives-link" href="/categories/前端/">前端<span class="sidebar_archives-count">14</span></a></li><li><a class="sidebar_archives-link" href="/categories/前端/技术/">技术<span class="sidebar_archives-count">13</span></a></li><li><a class="sidebar_archives-link" href="/categories/前端/面试/">面试<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/categories/随笔/">随笔<span class="sidebar_archives-count">2</span></a>
+                <a class="sidebar_archives-link" href="/categories/前端/">前端<span class="sidebar_archives-count">15</span></a></li><li><a class="sidebar_archives-link" href="/categories/前端/技术/">技术<span class="sidebar_archives-count">14</span></a></li><li><a class="sidebar_archives-link" href="/categories/前端/面试/">面试<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/categories/随笔/">随笔<span class="sidebar_archives-count">2</span></a>
             </ul>
         </li>
         
@@ -686,7 +723,7 @@
         <li>
             <a href="/archives">
                 文章总数
-                <span class="sidebar-badge">17</span>
+                <span class="sidebar-badge">18</span>
             </a>
         </li>
         
@@ -887,6 +924,10 @@ It will not impact the appearance and can give developers a lot of support :)
 <!-- Import prettify js  -->
 
 
+    
+        <script>lsloader.load("hanabi","/js/hanabi-browser-bundle.js?5+2z7ZZmFuZK5IcimlZbxw==", true)</script>
+    
+
 
 <!-- Window Load -->
 <!-- add class for prettify -->
@@ -897,6 +938,18 @@ It will not impact the appearance and can give developers a lot of support :)
     });
 
     
+    
+        
+        
+            
+                
+                    HanabiBrowser.putColor('#000');
+                
+                    HanabiBrowser.putColor('#666');
+                
+            
+        
+        HanabiBrowser.start('pre code',true);
     
 </script>
 

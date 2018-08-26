@@ -484,14 +484,31 @@
                 <div id="post-content" class="mdl-color-text--grey-700 mdl-card__supporting-text fade out">
     
         <p>babel-core在npm官网中的解释是：Babel compiler core.</p>
-<p>也就是Babel编译器的核心，因此意味着如果要使用babel-loader进行es6的转码你首先必须得安装babel-core<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ npm install --save-dev babel-core</span><br></pre></td></tr></table></figure></p>
+<p>也就是Babel编译器的核心，因此意味着如果要使用babel-loader进行es6的转码你首先必须得安装babel-core</p>
+<pre><code class="bash">  $ npm install --save-dev babel-core
+</code></pre>
 <p>babel-core安装了就行，无需手动配置和引入。</p>
 <p>搞懂了babel-loader和babel-core的关系，那babel-polify和babel-plugin-transform-runtime又是啥呢？</p>
 <p>由于Babel默认只转换新的javascript句法（syntax），而不转换新的API，比如Iterator、Generator、Set、Maps、Proxy、Reflect、Symbol、Promise等全局对象，以及一些定义在全局对象上的方法（比如Object.assign）都不会转码。</p>
 <p>因此，如果你的代码中用到了这些API那么你需要一个垫片库，babel polyfill就是这个作用。</p>
-<p>babel polyfill有三种：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">* babel-runtime</span><br><span class="line">* babel-plugin-transform-runtime</span><br><span class="line">* babel-polyfill</span><br></pre></td></tr></table></figure></p>
-<p>transform-runtime在使用webpack打包时需要配置到 .babelrc文件的的plugins中<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">"plugins"</span>: [</span><br><span class="line">        [<span class="string">"transform-runtime"</span>, &#123;</span><br><span class="line">                <span class="string">"helpers"</span>: <span class="literal">false</span>,</span><br><span class="line">                <span class="string">"polyfill"</span>: <span class="literal">true</span>,</span><br><span class="line">                <span class="string">"regenerator"</span>: <span class="literal">true</span>,</span><br><span class="line">                <span class="string">"moduleName"</span>: <span class="string">"babel-runtime"</span></span><br><span class="line">        &#125;]</span><br><span class="line">]</span><br></pre></td></tr></table></figure></p>
-<p>后面的配置项不设置都将默认为true，其实可以完全像下面这样配置<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">"plugins"</span>: [<span class="string">"transform-runtime"</span>]</span><br></pre></td></tr></table></figure></p>
+<p>babel polyfill有三种：</p>
+<pre><code class="bash">* babel-runtime
+* babel-plugin-transform-runtime
+* babel-polyfill
+</code></pre>
+<p>transform-runtime在使用webpack打包时需要配置到 .babelrc文件的的plugins中</p>
+<pre><code class="bash">&quot;plugins&quot;: [
+        [&quot;transform-runtime&quot;, {
+                &quot;helpers&quot;: false,
+                &quot;polyfill&quot;: true,
+                &quot;regenerator&quot;: true,
+                &quot;moduleName&quot;: &quot;babel-runtime&quot;
+        }]
+]
+</code></pre>
+<p>后面的配置项不设置都将默认为true，其实可以完全像下面这样配置</p>
+<pre><code class="bash">&quot;plugins&quot;: [&quot;transform-runtime&quot;]
+</code></pre>
 <p>babel-runtime和babel-plugin-transform-runtime的区别是使用babel-runtime时每次要转码一个api都需要手动添加</p>
 <p>require(‘babel-runtime’)；</p>
 <p>而babel-plugin-transform-runtime会由工具自动添加，主要的功能是为api提供沙箱的垫片方案，不会污染全局的api。</p>
@@ -644,7 +661,7 @@
             </a>
             <ul class="dropdown-menu">
             <li>
-                <a class="sidebar_archives-link" href="/archives/2018/08/">八月 2018<span class="sidebar_archives-count">4</span></a></li><li><a class="sidebar_archives-link" href="/archives/2018/07/">七月 2018<span class="sidebar_archives-count">4</span></a></li><li><a class="sidebar_archives-link" href="/archives/2018/06/">六月 2018<span class="sidebar_archives-count">5</span></a></li><li><a class="sidebar_archives-link" href="/archives/2017/09/">九月 2017<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/archives/2017/07/">七月 2017<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/archives/2017/04/">四月 2017<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/archives/2015/04/">四月 2015<span class="sidebar_archives-count">1</span></a>
+                <a class="sidebar_archives-link" href="/archives/2018/08/">八月 2018<span class="sidebar_archives-count">5</span></a></li><li><a class="sidebar_archives-link" href="/archives/2018/07/">七月 2018<span class="sidebar_archives-count">4</span></a></li><li><a class="sidebar_archives-link" href="/archives/2018/06/">六月 2018<span class="sidebar_archives-count">5</span></a></li><li><a class="sidebar_archives-link" href="/archives/2017/09/">九月 2017<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/archives/2017/07/">七月 2017<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/archives/2017/04/">四月 2017<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/archives/2015/04/">四月 2015<span class="sidebar_archives-count">1</span></a>
             </ul>
         </li>
         
@@ -662,7 +679,7 @@
             </a>
             <ul class="dropdown-menu">
                 <li>
-                <a class="sidebar_archives-link" href="/categories/前端/">前端<span class="sidebar_archives-count">14</span></a></li><li><a class="sidebar_archives-link" href="/categories/前端/技术/">技术<span class="sidebar_archives-count">13</span></a></li><li><a class="sidebar_archives-link" href="/categories/前端/面试/">面试<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/categories/随笔/">随笔<span class="sidebar_archives-count">2</span></a>
+                <a class="sidebar_archives-link" href="/categories/前端/">前端<span class="sidebar_archives-count">15</span></a></li><li><a class="sidebar_archives-link" href="/categories/前端/技术/">技术<span class="sidebar_archives-count">14</span></a></li><li><a class="sidebar_archives-link" href="/categories/前端/面试/">面试<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/categories/随笔/">随笔<span class="sidebar_archives-count">2</span></a>
             </ul>
         </li>
         
@@ -686,7 +703,7 @@
         <li>
             <a href="/archives">
                 文章总数
-                <span class="sidebar-badge">17</span>
+                <span class="sidebar-badge">18</span>
             </a>
         </li>
         
@@ -887,6 +904,10 @@ It will not impact the appearance and can give developers a lot of support :)
 <!-- Import prettify js  -->
 
 
+    
+        <script>lsloader.load("hanabi","/js/hanabi-browser-bundle.js?5+2z7ZZmFuZK5IcimlZbxw==", true)</script>
+    
+
 
 <!-- Window Load -->
 <!-- add class for prettify -->
@@ -897,6 +918,18 @@ It will not impact the appearance and can give developers a lot of support :)
     });
 
     
+    
+        
+        
+            
+                
+                    HanabiBrowser.putColor('#000');
+                
+                    HanabiBrowser.putColor('#666');
+                
+            
+        
+        HanabiBrowser.start('pre code',true);
     
 </script>
 

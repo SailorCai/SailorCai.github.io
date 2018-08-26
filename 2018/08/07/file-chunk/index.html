@@ -490,21 +490,36 @@
 <p>这次的尝试是在腾讯的一个内网项目中，这需要后台同学的配合。我和后台的约定是：</p>
 <p><strong>1、两个接口：</strong></p>
 <p><strong>第一个是请求上传接口，需要传入的参数包括</strong></p>
-<pre><code>1）文件名
+<pre><code>    1）文件名
 
-2）文件大小
+    2）文件大小
 
-3）文件md5码
+    3）文件md5码
 
-4）游戏id
+    4）游戏id
 
-5）page_type
+    5）page_type
 </code></pre><p><strong>其中游戏id和page_type是由于场景所导致的参数差异，因此只有前三个参数是必须的。</strong></p>
 <p>这个接口返回的主要参数包括：chunk_list、chunk_size、chunk_count</p>
 <p>chunk_list是一个数组，里面是目前未上传分片的编号，比如说文件总大小为1000M，每个分片2M，这样一共就需要上传500个分片，那么chunk_list中包含的就是从1到500的数字，当然、如果这次是接着上次的继续上传那么chunk_list中可能只包含其中一部分，而且不一定是连续的数字，可能是……100、145、146、147……，这是因为如果其中一片报错我们会跳过当前分片继续上传下一个分片，等到上传到最后我们会再请求一次第一个接口来确认chunk_list中是否还有分片未上传。</p>
 <p>chunk_size参数就是后台定好的每个分片的大小</p>
 <p>chunk_count是总分片数量</p>
-<p><strong>第二个接口是上传分片接口，需要传入的是一个FormData对象的实例：</strong><br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">​var form = new FormData();</span><br><span class="line">form.append(<span class="string">'file_name'</span>, file_name);    //文件名参数</span><br><span class="line">form.append(<span class="string">'file_size'</span>, file_size);            //文件大小</span><br><span class="line">form.append(<span class="string">'file_md5'</span>, data.file_md5);    //文件md5码</span><br><span class="line">form.append(<span class="string">'chunk_md5'</span>, md5);            //分片md5码</span><br><span class="line">form.append(<span class="string">'chunk_idx'</span>, data.count);        //分片编号</span><br><span class="line">form.append(<span class="string">'chunk_size'</span>,  Math.min(data.chunk_size, (end-start)));    //分片大小</span><br><span class="line">form.append(<span class="string">'game_id'</span>, data.game_id);    //游戏id</span><br><span class="line">form.append(<span class="string">'page_type'</span>, <span class="string">'upload_chunk'</span>);   </span><br><span class="line">var blobSlice = File.prototype.slice || File.prototype.mozSlice || File.prototype.webkitSlice;       //兼容方式获取slice方法</span><br><span class="line">var chunk_file = blobSlice.call(data.file, data.start, data.end);</span><br><span class="line">chunk_file.name = file_name;</span><br><span class="line">form.append(<span class="string">'chunk_file'</span>, chunk_file);        //文件分片</span><br></pre></td></tr></table></figure></p>
+<p><strong>第二个接口是上传分片接口，需要传入的是一个FormData对象的实例：</strong></p>
+<pre><code class="bash">​var form = new FormData();
+form.append(&#39;file_name&#39;, file_name);    //文件名参数
+form.append(&#39;file_size&#39;, file_size);            //文件大小
+form.append(&#39;file_md5&#39;, data.file_md5);    //文件md5码
+form.append(&#39;chunk_md5&#39;, md5);            //分片md5码
+form.append(&#39;chunk_idx&#39;, data.count);        //分片编号
+form.append(&#39;chunk_size&#39;,  Math.min(data.chunk_size, (end-start)));    //分片大小
+form.append(&#39;game_id&#39;, data.game_id);    //游戏id
+form.append(&#39;page_type&#39;, &#39;upload_chunk&#39;);   
+var blobSlice = File.prototype.slice || File.prototype.mozSlice || File.prototype.webkitSlice;       //兼容方式获取slice方法
+var chunk_file = blobSlice.call(data.file, data.start, data.end);
+chunk_file.name = file_name;
+form.append(&#39;chunk_file&#39;, chunk_file);        //文件分片
+
+</code></pre>
 <p>通过FormData的append( )方法来添加参数</p>
 <p>同样，最后两个参数不是必须的</p>
 <p>这里需要说明一下、FormData是XMLHttpRequest Level 2添加的一个新接口， 利用FormData对象,我们可以通过JavaScript用一些键值对来模拟一系列表单控件,我们还可以使用XMLHttpRequest的send( )方法来异步的提交这个”表单”.比起普通的ajax,使用FormData的最大优点就是我们可以异步上传一个二进制文件。FormData兼容性如下：<br><img src="file_chunk1.png" alt=""></p>
@@ -670,7 +685,7 @@
             </a>
             <ul class="dropdown-menu">
             <li>
-                <a class="sidebar_archives-link" href="/archives/2018/08/">八月 2018<span class="sidebar_archives-count">4</span></a></li><li><a class="sidebar_archives-link" href="/archives/2018/07/">七月 2018<span class="sidebar_archives-count">4</span></a></li><li><a class="sidebar_archives-link" href="/archives/2018/06/">六月 2018<span class="sidebar_archives-count">5</span></a></li><li><a class="sidebar_archives-link" href="/archives/2017/09/">九月 2017<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/archives/2017/07/">七月 2017<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/archives/2017/04/">四月 2017<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/archives/2015/04/">四月 2015<span class="sidebar_archives-count">1</span></a>
+                <a class="sidebar_archives-link" href="/archives/2018/08/">八月 2018<span class="sidebar_archives-count">5</span></a></li><li><a class="sidebar_archives-link" href="/archives/2018/07/">七月 2018<span class="sidebar_archives-count">4</span></a></li><li><a class="sidebar_archives-link" href="/archives/2018/06/">六月 2018<span class="sidebar_archives-count">5</span></a></li><li><a class="sidebar_archives-link" href="/archives/2017/09/">九月 2017<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/archives/2017/07/">七月 2017<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/archives/2017/04/">四月 2017<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/archives/2015/04/">四月 2015<span class="sidebar_archives-count">1</span></a>
             </ul>
         </li>
         
@@ -688,7 +703,7 @@
             </a>
             <ul class="dropdown-menu">
                 <li>
-                <a class="sidebar_archives-link" href="/categories/前端/">前端<span class="sidebar_archives-count">14</span></a></li><li><a class="sidebar_archives-link" href="/categories/前端/技术/">技术<span class="sidebar_archives-count">13</span></a></li><li><a class="sidebar_archives-link" href="/categories/前端/面试/">面试<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/categories/随笔/">随笔<span class="sidebar_archives-count">2</span></a>
+                <a class="sidebar_archives-link" href="/categories/前端/">前端<span class="sidebar_archives-count">15</span></a></li><li><a class="sidebar_archives-link" href="/categories/前端/技术/">技术<span class="sidebar_archives-count">14</span></a></li><li><a class="sidebar_archives-link" href="/categories/前端/面试/">面试<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/categories/随笔/">随笔<span class="sidebar_archives-count">2</span></a>
             </ul>
         </li>
         
@@ -712,7 +727,7 @@
         <li>
             <a href="/archives">
                 文章总数
-                <span class="sidebar-badge">17</span>
+                <span class="sidebar-badge">18</span>
             </a>
         </li>
         
@@ -913,6 +928,10 @@ It will not impact the appearance and can give developers a lot of support :)
 <!-- Import prettify js  -->
 
 
+    
+        <script>lsloader.load("hanabi","/js/hanabi-browser-bundle.js?5+2z7ZZmFuZK5IcimlZbxw==", true)</script>
+    
+
 
 <!-- Window Load -->
 <!-- add class for prettify -->
@@ -923,6 +942,18 @@ It will not impact the appearance and can give developers a lot of support :)
     });
 
     
+    
+        
+        
+            
+                
+                    HanabiBrowser.putColor('#000');
+                
+                    HanabiBrowser.putColor('#666');
+                
+            
+        
+        HanabiBrowser.start('pre code',true);
     
 </script>
 
