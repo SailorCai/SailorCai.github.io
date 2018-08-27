@@ -45,7 +45,7 @@
     
     <title>
         
-            分类: 前端 | 
+            url-loader不能处理html中引入的图片问题的解决方案 | 
         
         蔡胜龙的博客 | 技术交流平台
     </title>
@@ -56,7 +56,7 @@
 
     <meta name="format-detection" content="telephone=no"/>
     <meta name="description" itemprop="description" content="">
-    <meta name="keywords" content="蔡胜龙的博客|前端攻城狮">
+    <meta name="keywords" content="蔡胜龙的博客|前端攻城狮,前端,javascript">
     <meta name="theme-color" content="#0097A7">
 
     <!-- Disable Fucking Bloody Baidu Tranformation -->
@@ -217,7 +217,7 @@
     <!-- WebAPP Icons -->
     <meta name="mobile-web-app-capable" content="yes">
     <meta name="application-name" content="蔡胜龙的博客 | 技术交流平台">
-    <meta name="msapplication-starturl" content="http://yoursite.com/categories/前端/page/2/">
+    <meta name="msapplication-starturl" content="http://yoursite.com/2018/08/27/urlLoader/">
     <meta name="msapplication-navbutton-color" content="#0097A7">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-title" content="蔡胜龙的博客 | 技术交流平台">
@@ -232,13 +232,16 @@
     
 
     <!-- The Open Graph protocol -->
-    <meta property="og:url" content="http://yoursite.com/categories/前端/page/2/">
+    <meta property="og:url" content="http://yoursite.com/2018/08/27/urlLoader/">
     <meta property="og:type" content="blog">
-    <meta property="og:title" content="分类: 前端 | 蔡胜龙的博客 | 技术交流平台">
+    <meta property="og:title" content="url-loader不能处理html中引入的图片问题的解决方案 | 蔡胜龙的博客 | 技术交流平台">
     <meta property="og:image" content="/img/favicon.png">
     <meta property="og:description" content="">
-    
+    <meta property="og:article:tag" content="前端"> <meta property="og:article:tag" content="javascript"> 
 
+    
+        <meta property="article:published_time" content="Mon Aug 27 2018 00:44:27 GMT+0800">
+        <meta property="article:modified_time" content="Mon Aug 27 2018 00:51:55 GMT+0800">
     
 
     <!-- The Twitter Card protocol -->
@@ -246,13 +249,43 @@
 
     <!-- Add canonical link for SEO -->
     
-        <link rel="canonical" href="http://yoursite.com/categories/前端/page/2/index.html" />
+        <link rel="canonical" href="http://yoursite.com/2018/08/27/urlLoader/index.html" />
     
 
     <!-- Structured-data for SEO -->
     
         
 
+
+<script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "mainEntityOfPage": "http://yoursite.com/2018/08/27/urlLoader/index.html",
+    "headline": "url-loader不能处理html中引入的图片问题的解决方案",
+    "datePublished": "Mon Aug 27 2018 00:44:27 GMT+0800",
+    "dateModified": "Mon Aug 27 2018 00:51:55 GMT+0800",
+    "author": {
+        "@type": "Person",
+        "name": "蔡胜龙",
+        "image": {
+            "@type": "ImageObject",
+            "url": "/img/avater.jpg"
+        },
+        "description": "Hi, nice to meet you"
+    },
+    "publisher": {
+        "@type": "Organization",
+        "name": "蔡胜龙的博客 | 技术交流平台",
+        "logo": {
+            "@type":"ImageObject",
+            "url": "/img/favicon.png"
+        }
+    },
+    "keywords": ",前端,javascript蔡胜龙的博客|前端攻城狮",
+    "description": "",
+}
+</script>
 
 
     
@@ -286,470 +319,264 @@
                         </button>
                     
 
-                    <!-- Index Module -->
-<div class="material-index mdl-grid">
-    
-    <div class="locate-thumbnail-symbol"></div>
+                    <!-- Post TOC -->
 
-    <!-- Pin on top -->
+    
+    <!-- Back Button -->
+    <!--
+    <div class="material-back" id="backhome-div" tabindex="0">
+        <a class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon"
+           href="#" onclick="window.history.back();return false;"
+           target="_self"
+           role="button"
+           data-upgraded=",MaterialButton,MaterialRipple">
+            <i class="material-icons" role="presentation">arrow_back</i>
+            <span class="mdl-button__ripple-container">
+                <span class="mdl-ripple"></span>
+            </span>
+        </a>
+    </div>
+    -->
+
+
+    <!-- Left aligned menu below button -->
+    
     
 
-    <!-- Normal Post -->
-    
-        
-            
-                <!-- Paradox Thumbnail -->
-                <div class="post_entry-module mdl-card mdl-shadow--2dp mdl-cell mdl-cell--12-col fade out">
-    <!-- Post Thumbnail -->
+
+
+
+<!-- Layouts -->
+
+    <!-- Post Module -->
+    <div class="material-post_container">
+
+        <div class="material-post mdl-grid">
+            <div class="mdl-card mdl-shadow--4dp mdl-cell mdl-cell--12-col">
+
+                <!-- Post Header(Thumbnail & Title) -->
+                
+    <!-- Paradox Post Header -->
     
         
             <!-- Random Thumbnail -->
             <div class="post_thumbnail-random mdl-card__media mdl-color-text--grey-50">
-        
-    
+            <script type="text/ls-javascript" id="post-thumbnail-script">
+    var randomNum = Math.floor(Math.random() * 19 + 1);
 
-        <!-- Post Title -->
-        <p class="article-headline-p"><a href="/2018/07/03/git-pass/">本地仓库每次向github提交代码都需要输入账号密码的解决方法</a></p>
-    </div>
-
-    <!-- Post Excerpt -->
-    <div class="mdl-color-text--grey-600 mdl-card__supporting-text post_entry-content">
-        
-            当我们向github远程仓库push代码的时候可能会出现每次都要求输入账号密码的问题。
-其实会出现这个问题的原因只是因为你在添加ori...
-        
-        &nbsp;&nbsp;&nbsp;
-        <span>
-            <a href="/2018/07/03/git-pass/" target="_self">阅读全文</a>
-        </span>
-    </div>
-    <!-- Post_entry Info-->
-    <div id="post_entry-info">
-        <div id="post_entry-left-info" class="mdl-card__supporting-text meta mdl-color-text--grey-600 ">
-            <!-- Author Avatar -->
-            <div id="author-avatar">
-                <img src="/img/avater.jpg" width="44px" height="44px" alt="蔡胜龙's avatar">
-            </div>
-            <div>
-                <strong>蔡胜龙</strong>
-                <span>7月 03, 2018</span>
-            </div>
-        </div>
-        <div id="post_entry-right-info">
-          
-              <!-- Category -->
-              <span class="post_entry-category">
-                  <a class="post_category-link" href="/categories/前端/">前端</a>, <a class="post_category-link" href="/categories/前端/技术/">技术</a>
-              </span>
-            
-
-            
-
-            
-
-            <!-- Post Views -->
-            <span class="post_entry-views">
-            </span>
-        </div>
-    </div>
-</div>
-
-            
-            
-        
-    
-        
-            
-                <!-- Paradox Thumbnail -->
-                <div class="post_entry-module mdl-card mdl-shadow--2dp mdl-cell mdl-cell--12-col fade out">
-    <!-- Post Thumbnail -->
-    
-        
-            <!-- Random Thumbnail -->
-            <div class="post_thumbnail-random mdl-card__media mdl-color-text--grey-50">
-        
-    
-
-        <!-- Post Title -->
-        <p class="article-headline-p"><a href="/2018/06/29/wamp-server/">windows通过wamp apache实现代理及反向代理</a></p>
-    </div>
-
-    <!-- Post Excerpt -->
-    <div class="mdl-color-text--grey-600 mdl-card__supporting-text post_entry-content">
-        
-            wamp是一款基于windows平台的AMP（Apache/MySQL/PHP）集成软件。安装和使用都非常简便，可以让我们避免由于缺乏AMP的知识而...
-        
-        &nbsp;&nbsp;&nbsp;
-        <span>
-            <a href="/2018/06/29/wamp-server/" target="_self">阅读全文</a>
-        </span>
-    </div>
-    <!-- Post_entry Info-->
-    <div id="post_entry-info">
-        <div id="post_entry-left-info" class="mdl-card__supporting-text meta mdl-color-text--grey-600 ">
-            <!-- Author Avatar -->
-            <div id="author-avatar">
-                <img src="/img/avater.jpg" width="44px" height="44px" alt="蔡胜龙's avatar">
-            </div>
-            <div>
-                <strong>蔡胜龙</strong>
-                <span>6月 29, 2018</span>
-            </div>
-        </div>
-        <div id="post_entry-right-info">
-          
-              <!-- Category -->
-              <span class="post_entry-category">
-                  <a class="post_category-link" href="/categories/前端/">前端</a>, <a class="post_category-link" href="/categories/前端/技术/">技术</a>
-              </span>
-            
-
-            
-
-            
-
-            <!-- Post Views -->
-            <span class="post_entry-views">
-            </span>
-        </div>
-    </div>
-</div>
-
-            
-            
-        
-    
-        
-            
-                <!-- Paradox Thumbnail -->
-                <div class="post_entry-module mdl-card mdl-shadow--2dp mdl-cell mdl-cell--12-col fade out">
-    <!-- Post Thumbnail -->
-    
-        
-            <!-- Random Thumbnail -->
-            <div class="post_thumbnail-random mdl-card__media mdl-color-text--grey-50">
-        
-    
-
-        <!-- Post Title -->
-        <p class="article-headline-p"><a href="/2018/06/28/prototype/">一次搞懂javascript原型链和继承</a></p>
-    </div>
-
-    <!-- Post Excerpt -->
-    <div class="mdl-color-text--grey-600 mdl-card__supporting-text post_entry-content">
-        
-            javascript原型链是个很容易被新手前端忽略的重要概念，在初级编程工作中绝大部分人可能会觉的原型链似乎没啥用、因此非常容易被忽略。我自己刚入行...
-        
-        &nbsp;&nbsp;&nbsp;
-        <span>
-            <a href="/2018/06/28/prototype/" target="_self">阅读全文</a>
-        </span>
-    </div>
-    <!-- Post_entry Info-->
-    <div id="post_entry-info">
-        <div id="post_entry-left-info" class="mdl-card__supporting-text meta mdl-color-text--grey-600 ">
-            <!-- Author Avatar -->
-            <div id="author-avatar">
-                <img src="/img/avater.jpg" width="44px" height="44px" alt="蔡胜龙's avatar">
-            </div>
-            <div>
-                <strong>蔡胜龙</strong>
-                <span>6月 28, 2018</span>
-            </div>
-        </div>
-        <div id="post_entry-right-info">
-          
-              <!-- Category -->
-              <span class="post_entry-category">
-                  <a class="post_category-link" href="/categories/前端/">前端</a>, <a class="post_category-link" href="/categories/前端/技术/">技术</a>
-              </span>
-            
-
-            
-
-            
-
-            <!-- Post Views -->
-            <span class="post_entry-views">
-            </span>
-        </div>
-    </div>
-</div>
-
-            
-            
-        
-    
-        
-            
-                <!-- Paradox Thumbnail -->
-                <div class="post_entry-module mdl-card mdl-shadow--2dp mdl-cell mdl-cell--12-col fade out">
-    <!-- Post Thumbnail -->
-    
-        
-            <!-- Random Thumbnail -->
-            <div class="post_thumbnail-random mdl-card__media mdl-color-text--grey-50">
-        
-    
-
-        <!-- Post Title -->
-        <p class="article-headline-p"><a href="/2018/06/20/spark-md5/">前端通过spark-md5.js计算本地文件md5</a></p>
-    </div>
-
-    <!-- Post Excerpt -->
-    <div class="mdl-color-text--grey-600 mdl-card__supporting-text post_entry-content">
-        
-            背景：说到本...
-        
-        &nbsp;&nbsp;&nbsp;
-        <span>
-            <a href="/2018/06/20/spark-md5/" target="_self">阅读全文</a>
-        </span>
-    </div>
-    <!-- Post_entry Info-->
-    <div id="post_entry-info">
-        <div id="post_entry-left-info" class="mdl-card__supporting-text meta mdl-color-text--grey-600 ">
-            <!-- Author Avatar -->
-            <div id="author-avatar">
-                <img src="/img/avater.jpg" width="44px" height="44px" alt="蔡胜龙's avatar">
-            </div>
-            <div>
-                <strong>蔡胜龙</strong>
-                <span>6月 20, 2018</span>
-            </div>
-        </div>
-        <div id="post_entry-right-info">
-          
-              <!-- Category -->
-              <span class="post_entry-category">
-                  <a class="post_category-link" href="/categories/前端/">前端</a>, <a class="post_category-link" href="/categories/前端/技术/">技术</a>
-              </span>
-            
-
-            
-
-            
-
-            <!-- Post Views -->
-            <span class="post_entry-views">
-            </span>
-        </div>
-    </div>
-</div>
-
-            
-            
-        
-    
-        
-            
-                <!-- Paradox Thumbnail -->
-                <div class="post_entry-module mdl-card mdl-shadow--2dp mdl-cell mdl-cell--12-col fade out">
-    <!-- Post Thumbnail -->
-    
-        
-            <!-- Random Thumbnail -->
-            <div class="post_thumbnail-random mdl-card__media mdl-color-text--grey-50">
-        
-    
-
-        <!-- Post Title -->
-        <p class="article-headline-p"><a href="/2017/09/20/jq-click/">关于jquery的click()和trigger(&#39;click&#39;)方法的一点问题</a></p>
-    </div>
-
-    <!-- Post Excerpt -->
-    <div class="mdl-color-text--grey-600 mdl-card__supporting-text post_entry-content">
-        
-            在原生js中如果要模拟事件其实比较麻烦的事情，因为要考虑到各个浏览器对dom标准的兼容，同时还要进行多个步骤（创建event对象、初始化、正式触发等...
-        
-        &nbsp;&nbsp;&nbsp;
-        <span>
-            <a href="/2017/09/20/jq-click/" target="_self">阅读全文</a>
-        </span>
-    </div>
-    <!-- Post_entry Info-->
-    <div id="post_entry-info">
-        <div id="post_entry-left-info" class="mdl-card__supporting-text meta mdl-color-text--grey-600 ">
-            <!-- Author Avatar -->
-            <div id="author-avatar">
-                <img src="/img/avater.jpg" width="44px" height="44px" alt="蔡胜龙's avatar">
-            </div>
-            <div>
-                <strong>蔡胜龙</strong>
-                <span>9月 20, 2017</span>
-            </div>
-        </div>
-        <div id="post_entry-right-info">
-          
-              <!-- Category -->
-              <span class="post_entry-category">
-                  <a class="post_category-link" href="/categories/前端/">前端</a>, <a class="post_category-link" href="/categories/前端/技术/">技术</a>
-              </span>
-            
-
-            
-
-            
-
-            <!-- Post Views -->
-            <span class="post_entry-views">
-            </span>
-        </div>
-    </div>
-</div>
-
-            
-            
-        
-    
-        
-            
-                <!-- Paradox Thumbnail -->
-                <div class="post_entry-module mdl-card mdl-shadow--2dp mdl-cell mdl-cell--12-col fade out">
-    <!-- Post Thumbnail -->
-    
-        
-            <!-- Random Thumbnail -->
-            <div class="post_thumbnail-random mdl-card__media mdl-color-text--grey-50">
-        
-    
-
-        <!-- Post Title -->
-        <p class="article-headline-p"><a href="/2017/07/10/div-text/">用div模拟文本域实现高度自动撑开以及相关问题的解决方法</a></p>
-    </div>
-
-    <!-- Post Excerpt -->
-    <div class="mdl-color-text--grey-600 mdl-card__supporting-text post_entry-content">
-        
-            前段时间项目里面用到了一个高度随着内容自动撑开的文本域效果，这一点传统的textarea标签是满足不了的，而我们要做的只是在div中加一个conte...
-        
-        &nbsp;&nbsp;&nbsp;
-        <span>
-            <a href="/2017/07/10/div-text/" target="_self">阅读全文</a>
-        </span>
-    </div>
-    <!-- Post_entry Info-->
-    <div id="post_entry-info">
-        <div id="post_entry-left-info" class="mdl-card__supporting-text meta mdl-color-text--grey-600 ">
-            <!-- Author Avatar -->
-            <div id="author-avatar">
-                <img src="/img/avater.jpg" width="44px" height="44px" alt="蔡胜龙's avatar">
-            </div>
-            <div>
-                <strong>蔡胜龙</strong>
-                <span>7月 10, 2017</span>
-            </div>
-        </div>
-        <div id="post_entry-right-info">
-          
-              <!-- Category -->
-              <span class="post_entry-category">
-                  <a class="post_category-link" href="/categories/前端/">前端</a>, <a class="post_category-link" href="/categories/前端/技术/">技术</a>
-              </span>
-            
-
-            
-
-            
-
-            <!-- Post Views -->
-            <span class="post_entry-views">
-            </span>
-        </div>
-    </div>
-</div>
-
-            
-            
-        
-    
-        
-            
-                <!-- Paradox Thumbnail -->
-                <div class="post_entry-module mdl-card mdl-shadow--2dp mdl-cell mdl-cell--12-col fade out">
-    <!-- Post Thumbnail -->
-    
-        
-            <!-- Random Thumbnail -->
-            <div class="post_thumbnail-random mdl-card__media mdl-color-text--grey-50">
-        
-    
-
-        <!-- Post Title -->
-        <p class="article-headline-p"><a href="/2017/04/05/input-file/">用input type=file调取手机照相机以及相册选择照片上传</a></p>
-    </div>
-
-    <!-- Post Excerpt -->
-    <div class="mdl-color-text--grey-600 mdl-card__supporting-text post_entry-content">
-        
-            最近由于在写一个车贷的webapp项目，其中要求调取手机照相机以及手机相册来获取照片，而我之前一直是用cordova等打包工具调取手机硬件、...
-        
-        &nbsp;&nbsp;&nbsp;
-        <span>
-            <a href="/2017/04/05/input-file/" target="_self">阅读全文</a>
-        </span>
-    </div>
-    <!-- Post_entry Info-->
-    <div id="post_entry-info">
-        <div id="post_entry-left-info" class="mdl-card__supporting-text meta mdl-color-text--grey-600 ">
-            <!-- Author Avatar -->
-            <div id="author-avatar">
-                <img src="/img/avater.jpg" width="44px" height="44px" alt="蔡胜龙's avatar">
-            </div>
-            <div>
-                <strong>蔡胜龙</strong>
-                <span>4月 05, 2017</span>
-            </div>
-        </div>
-        <div id="post_entry-right-info">
-          
-              <!-- Category -->
-              <span class="post_entry-category">
-                  <a class="post_category-link" href="/categories/前端/">前端</a>, <a class="post_category-link" href="/categories/前端/技术/">技术</a>
-              </span>
-            
-
-            
-
-            
-
-            <!-- Post Views -->
-            <span class="post_entry-views">
-            </span>
-        </div>
-    </div>
-</div>
-
-            
-            
-        
-    
-
-    
-    <!-- Index nav -->
-        <nav class="material-nav mdl-cell mdl-cell--12-col">
-            <a class="extend prev" rel="prev" href="/categories/前端/"><button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon"><i class="material-icons" role="presentation">arrow_back</i></button></a><a class="page-number" href="/categories/前端/">1</a><span class="page-number current">2</span>
-        </nav>
-    
-
-    
-        <script type="text/ls-javascript" id="thumbnail-script">
-    var randomNum;
-
-    var locatePost = $('.locate-thumbnail-symbol').next();
-    for(var i = 0; i < 10; i++) {
-        randomNum = Math.floor(Math.random() * 19 + 1);
-
-        locatePost.children('.post_thumbnail-random').attr('id', 'random_thumbnail-'+randomNum);
-        locatePost.children('.post_thumbnail-random').attr('data-original', '/img/random/material-' + randomNum + '.png');
+    $('.post_thumbnail-random').attr('data-original', '/img/random/material-' + randomNum + '.png');
     $('.post_thumbnail-random').addClass('lazy');
-
-        locatePost = locatePost.next();
-    }
 </script>
 
+        
+    
+            <p class="article-headline-p">
+                url-loader不能处理html中引入的图片问题的解决方案
+            </p>
+        </div>
+
+
+
+
+
+                
+                    <!-- Paradox Post Info -->
+                    <div class="mdl-color-text--grey-700 mdl-card__supporting-text meta">
+
+    <!-- Author Avatar -->
+    <div id="author-avatar">
+        <img src="/img/avater.jpg" width="44px" height="44px" alt="Author Avatar"/>
+    </div>
+    <!-- Author Name & Date -->
+    <div>
+        <strong>蔡胜龙</strong>
+        <span>8月 27, 2018</span>
+    </div>
+
+    <div class="section-spacer"></div>
+
+    <!-- Favorite -->
+    <!--
+        <button id="article-functions-like-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon btn-like">
+            <i class="material-icons" role="presentation">favorite</i>
+            <span class="visuallyhidden">favorites</span>
+        </button>
+    -->
+
+    <!-- Qrcode -->
+    
+
+    <!-- Tags (bookmark) -->
+    
+    <button id="article-functions-viewtags-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
+        <i class="material-icons" role="presentation">bookmark</i>
+        <span class="visuallyhidden">bookmark</span>
+    </button>
+    <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="article-functions-viewtags-button">
+        <li class="mdl-menu__item">
+        <a class="post_tag-link" href="/tags/javascript/">javascript</a></li><li class="mdl-menu__item"><a class="post_tag-link" href="/tags/前端/">前端</a>
+    </ul>
+    
+
+    <!-- Share -->
+    
+        <button id="article-fuctions-share-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
+    <i class="material-icons" role="presentation">share</i>
+    <span class="visuallyhidden">share</span>
+</button>
+<ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="article-fuctions-share-button">
+    
+
+    
+
+    <!-- Share Weibo -->
+    
+        <a class="post_share-link" href="http://service.weibo.com/share/share.php?appkey=&title=url-loader不能处理html中引入的图片问题的解决方案&url=http://yoursite.com/2018/08/27/urlLoader/index.html&pic=http://yoursite.com/img/favicon.png&searchPic=false&style=simple" target="_blank">
+            <li class="mdl-menu__item">
+                分享到微博
+            </li>
+        </a>
+    
+
+    <!-- Share Twitter -->
+    
+
+    <!-- Share Facebook -->
+    
+
+    <!-- Share Google+ -->
+    
+        <a class="post_share-link" href="https://plus.google.com/share?url=http://yoursite.com/2018/08/27/urlLoader/index.html" target="_blank">
+            <li class="mdl-menu__item">
+                分享到 Google+
+            </li>
+        </a>
+    
+
+    <!-- Share LinkedIn -->
+    
+
+    <!-- Share QQ -->
+    
+        <a class="post_share-link" href="http://connect.qq.com/widget/shareqq/index.html?site=蔡胜龙的博客 | 技术交流平台&title=url-loader不能处理html中引入的图片问题的解决方案&summary=&pics=http://yoursite.com/img/favicon.png&url=http://yoursite.com/2018/08/27/urlLoader/index.html" target="_blank">
+            <li class="mdl-menu__item">
+                分享到 QQ
+            </li>
+        </a>
+    
+
+    <!-- Share Telegram -->
+    
+        <a class="post_share-link" href="https://telegram.me/share/url?url=http://yoursite.com/2018/08/27/urlLoader/index.html&text=url-loader不能处理html中引入的图片问题的解决方案" target="_blank">
+            <li class="mdl-menu__item">
+                分享到 Telegram
+            </li>
+        </a>
+    
+</ul>
+
     
 </div>
+
+                
+
+                <!-- Post Content -->
+                <div id="post-content" class="mdl-color-text--grey-700 mdl-card__supporting-text fade out">
+    
+        <p>在我们使用webpack进行项目构建的时候，url-loader是个非常有用的工具，<br>与file-loader相比，url-loader能将图片大小在limit限定值之内的将图片转译成base64格式的字符串，<br>这样能直接减少很多不必要的http请求，在应用性能提升上的效益还是非常可观的。</p>
+<p>我们项目中引入图片的方式基本上可以分为三种：<br>1、在js中import图片然后赋值给图片的src属性</p>
+<pre><code class="bash">import logo from &#39;../img/logo.png&#39;;
+document.getElementById(&#39;box&#39;).src = logo;
+</code></pre>
+<p>2、css中设置元素背景图片</p>
+<pre><code class="bash">.box{background-image: url(../img/logo.png)}
+</code></pre>
+<p>然后在js中通过import ‘@/css/index.css’的形式引入</p>
+<p>3、在html的img标签中直接写入src属性，且一般是相对路径</p>
+<pre><code class="bash">&lt;img src=&quot;img/logo.png&quot; /&gt;
+</code></pre>
+<p>对于前两种情况，由于都是通过import的方式引入的图片和css文件，因此图片能得到正确处理，但是第三种请况是得不到处理的。</p>
+<p>解决方案：<br>在配置中加入html-withimg-plugin</p>
+<p>1、下载：npm install html-withimg-plugin –save-dev</p>
+<p>2、在html-webpack-plugin的配置中加入如下配置：</p>
+<pre><code class="bash">new WebpackHtmlPlugin({
+        filename: item,
+        template: &#39;html-withimg-loader!&#39;+path.resolve(__dirname, &#39;src/html/index.html&#39;),
+        chunks: [&#39;js/common&#39;, name]
+    })
+
+</code></pre>
+<p>完成配置后再次编译就会发现html中引入的图片也得到了相应的处理</p>
+<p>更多配置信息可以参考我之前的博客：<a href="https://blog.csdn.net/logan_LG/article/details/81110577" target="_blank" rel="noopener">多页项目的webpack配置</a><br>github仓库地址：<a href="https://github.com/SailorCai/muti-page-webpack" target="_blank" rel="noopener">https://github.com/SailorCai/muti-page-webpack</a></p>
+
+        
+    
+
+    
+</div>
+
+
+                
+
+                <!-- Post Comments -->
+                
+                    
+    <!-- 使用 来必力 -->
+<div id="livere-comment">
+    <div id="lv-container" data-id="city" data-uid="MTAyMC8zODcwNS8xNTIzMw==">
+	<script type="text/ls-javascript" id="livere-comment-js">
+   (function(d, s) {
+       var j, e = d.getElementsByTagName(s)[0];
+       if (typeof LivereTower === 'function') { return; }
+       j = d.createElement(s);
+       j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+       j.async = true;
+       e.parentNode.insertBefore(j, e);
+   })(document, 'script');
+	</script>
+</div>
+</div>
+<style>
+    #livere-comment{
+        background-color: #eee;
+        padding: 2pc;
+    }
+</style>
+
+                
+            </div>
+
+            <!-- Post Prev & Next Nav -->
+            <nav class="material-nav mdl-color-text--grey-50 mdl-cell mdl-cell--12-col">
+    <!-- Prev Nav -->
+    
+        <a href="/2018/08/27/extractCss/" id="post_nav-newer" class="prev-content">
+            <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-color--white mdl-color-text--grey-900" role="presentation">
+                <i class="material-icons">arrow_back</i>
+            </button>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            新篇
+        </a>
+    
+
+    <!-- Section Spacer -->
+    <div class="section-spacer"></div>
+
+    <!-- Next Nav -->
+    
+        <a href="/2018/08/17/ieerror/" id="post_nav-older" class="next-content">
+            旧篇
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-color--white mdl-color-text--grey-900" role="presentation">
+                <i class="material-icons">arrow_forward</i>
+            </button>
+        </a>
+    
+</nav>
+
+        </div>
+    </div>
+
 
 
                     
