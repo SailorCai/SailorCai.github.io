@@ -241,7 +241,7 @@
 
     
         <meta property="article:published_time" content="Mon Aug 27 2018 23:22:34 GMT+0800">
-        <meta property="article:modified_time" content="Mon Aug 27 2018 23:32:22 GMT+0800">
+        <meta property="article:modified_time" content="Fri Aug 31 2018 23:25:55 GMT+0800">
     
 
     <!-- The Twitter Card protocol -->
@@ -264,7 +264,7 @@
     "mainEntityOfPage": "http://yoursite.com/2018/08/27/extractCss/index.html",
     "headline": "解决webpack中css独立成文件后图片路径错误的问题",
     "datePublished": "Mon Aug 27 2018 23:22:34 GMT+0800",
-    "dateModified": "Mon Aug 27 2018 23:32:22 GMT+0800",
+    "dateModified": "Fri Aug 31 2018 23:25:55 GMT+0800",
     "author": {
         "@type": "Person",
         "name": "蔡胜龙",
@@ -490,15 +490,15 @@
 }),
 </code></pre>
 <p>也就是把独立出来的css文件放入dist下的css文件夹下<br>然而，build之后发现css中引入的图片并没有正确引入，并且报错了：</p>
-<p><img src="image" alt=""><br><img src="image2" alt=""></p>
+<p><img src="Image.png" alt=""><br><img src="Image2.png" alt=""></p>
 <p>经过url-loader处理后的图片是导出到了 dist/img/ 目录下</p>
 <p>可以看到url是img/webpack.xxx.jpg，而正确的路径应该是 ../img/webpack.xxx.jpg</p>
 <p>如果直接把css文件直接放在dist根目录下是没有问题的，但是按照习惯，我们一般会把css文件单独放到一个css文件夹下。</p>
 <p>那么我们怎么解决这个问题呢？</p>
 <p>在此之前我们先看看网上见得最多的解决方案，也就是在output的配置中加入一个 publicPath: ‘../‘ 配置，</p>
-<p><img src="image3" alt=""></p>
+<p><img src="Image3.png" alt=""></p>
 <p>我们按照这个配置编译看一下能否解决问题</p>
-<p><img src="image4" alt=""></p>
+<p><img src="Image4.png" alt=""></p>
 <p>css中的url路径的确可以了，但是可以看到，控制台出现了更多报错，并且css文件本身也不能正确引入了，因此这种方案在这种情况下是解决不了问题的。</p>
 <p>由于output中的publicPatch配置会在所有用相对路径引用资源的地方都将上一个 ‘../’因此导致其他原本正确的路径也错了。</p>
 <p>因此正确的解决方案应该是在引入MiniCssExtractPlugin.loader时使用对象方式，并在options目录下添加 publicPath: ‘../‘ 配置，这样就只会在css文件中引入的资源中添加 “../”，就不会影响其他文件中的路径了。</p>
@@ -523,7 +523,7 @@
 
 </code></pre>
 <p>配置好后run dev server或者build，就会看到css中的资源正确引入了。</p>
-<p>更多配置信息可以参考我之前的博客：<a href="https://blog.csdn.net/logan_LG/article/details/81110577" target="_blank" rel="noopener">多页项目的webpack配置</a><br>github仓库地址：<a href="https://github.com/SailorCai/muti-page-webpack" target="_blank" rel="noopener">https://github.com/SailorCai/muti-page-webpack</a></p>
+<p>更多配置信息可以参考我之前的博客：<a href="https://blog.csdn.net/logan_LG/article/details/81110577" target="_blank" rel="noopener">多页项目的webpack配置</a><br>github仓库地址：<a href="https://github.com/SailorCai/muti-page-webpack" target="_blank" rel="noopener">https://github.com/SailorCai/muti-page-webpack</a> </p>
 
         
     
@@ -565,6 +565,14 @@
             <!-- Post Prev & Next Nav -->
             <nav class="material-nav mdl-color-text--grey-50 mdl-cell mdl-cell--12-col">
     <!-- Prev Nav -->
+    
+        <a href="/2018/09/05/08-09-05/" id="post_nav-newer" class="prev-content">
+            <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-color--white mdl-color-text--grey-900" role="presentation">
+                <i class="material-icons">arrow_back</i>
+            </button>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            新篇
+        </a>
     
 
     <!-- Section Spacer -->
@@ -664,7 +672,7 @@
             </a>
             <ul class="dropdown-menu">
             <li>
-                <a class="sidebar_archives-link" href="/archives/2018/08/">八月 2018<span class="sidebar_archives-count">7</span></a></li><li><a class="sidebar_archives-link" href="/archives/2018/07/">七月 2018<span class="sidebar_archives-count">4</span></a></li><li><a class="sidebar_archives-link" href="/archives/2018/06/">六月 2018<span class="sidebar_archives-count">5</span></a></li><li><a class="sidebar_archives-link" href="/archives/2017/09/">九月 2017<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/archives/2017/07/">七月 2017<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/archives/2017/04/">四月 2017<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/archives/2015/04/">四月 2015<span class="sidebar_archives-count">1</span></a>
+                <a class="sidebar_archives-link" href="/archives/2018/09/">九月 2018<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/archives/2018/08/">八月 2018<span class="sidebar_archives-count">7</span></a></li><li><a class="sidebar_archives-link" href="/archives/2018/07/">七月 2018<span class="sidebar_archives-count">4</span></a></li><li><a class="sidebar_archives-link" href="/archives/2018/06/">六月 2018<span class="sidebar_archives-count">5</span></a></li><li><a class="sidebar_archives-link" href="/archives/2017/09/">九月 2017<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/archives/2017/07/">七月 2017<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/archives/2017/04/">四月 2017<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/archives/2015/04/">四月 2015<span class="sidebar_archives-count">1</span></a>
             </ul>
         </li>
         
@@ -682,7 +690,7 @@
             </a>
             <ul class="dropdown-menu">
                 <li>
-                <a class="sidebar_archives-link" href="/categories/前端/">前端<span class="sidebar_archives-count">17</span></a></li><li><a class="sidebar_archives-link" href="/categories/前端/webpack/">webpack<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/categories/前端/技术/">技术<span class="sidebar_archives-count">15</span></a></li><li><a class="sidebar_archives-link" href="/categories/前端/面试/">面试<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/categories/随笔/">随笔<span class="sidebar_archives-count">2</span></a>
+                <a class="sidebar_archives-link" href="/categories/前端/">前端<span class="sidebar_archives-count">17</span></a></li><li><a class="sidebar_archives-link" href="/categories/前端/webpack/">webpack<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/categories/前端/技术/">技术<span class="sidebar_archives-count">15</span></a></li><li><a class="sidebar_archives-link" href="/categories/前端/面试/">面试<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/categories/随笔/">随笔<span class="sidebar_archives-count">3</span></a>
             </ul>
         </li>
         
@@ -706,7 +714,7 @@
         <li>
             <a href="/archives">
                 文章总数
-                <span class="sidebar-badge">20</span>
+                <span class="sidebar-badge">21</span>
             </a>
         </li>
         
