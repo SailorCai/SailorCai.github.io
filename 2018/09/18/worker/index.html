@@ -45,7 +45,7 @@
     
     <title>
         
-            Hello World | 
+            谈谈javascript中的多线程 | 
         
         蔡胜龙的博客 | 技术交流平台
     </title>
@@ -56,7 +56,7 @@
 
     <meta name="format-detection" content="telephone=no"/>
     <meta name="description" itemprop="description" content="">
-    <meta name="keywords" content="蔡胜龙的博客|前端攻城狮">
+    <meta name="keywords" content="蔡胜龙的博客|前端攻城狮,前端,javascript">
     <meta name="theme-color" content="#0097A7">
 
     <!-- Disable Fucking Bloody Baidu Tranformation -->
@@ -217,7 +217,7 @@
     <!-- WebAPP Icons -->
     <meta name="mobile-web-app-capable" content="yes">
     <meta name="application-name" content="蔡胜龙的博客 | 技术交流平台">
-    <meta name="msapplication-starturl" content="http://yoursite.com/2015/04/05/hello-world/">
+    <meta name="msapplication-starturl" content="http://yoursite.com/2018/09/18/worker/">
     <meta name="msapplication-navbutton-color" content="#0097A7">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-title" content="蔡胜龙的博客 | 技术交流平台">
@@ -232,16 +232,16 @@
     
 
     <!-- The Open Graph protocol -->
-    <meta property="og:url" content="http://yoursite.com/2015/04/05/hello-world/">
+    <meta property="og:url" content="http://yoursite.com/2018/09/18/worker/">
     <meta property="og:type" content="blog">
-    <meta property="og:title" content="Hello World | 蔡胜龙的博客 | 技术交流平台">
+    <meta property="og:title" content="谈谈javascript中的多线程 | 蔡胜龙的博客 | 技术交流平台">
     <meta property="og:image" content="/img/favicon.png">
     <meta property="og:description" content="">
-    
+    <meta property="og:article:tag" content="前端"> <meta property="og:article:tag" content="javascript"> 
 
     
-        <meta property="article:published_time" content="Sun Apr 05 2015 22:10:23 GMT+0800">
-        <meta property="article:modified_time" content="Mon Aug 27 2018 00:52:47 GMT+0800">
+        <meta property="article:published_time" content="Tue Sep 18 2018 23:15:08 GMT+0800">
+        <meta property="article:modified_time" content="Tue Sep 18 2018 23:19:19 GMT+0800">
     
 
     <!-- The Twitter Card protocol -->
@@ -249,7 +249,7 @@
 
     <!-- Add canonical link for SEO -->
     
-        <link rel="canonical" href="http://yoursite.com/2015/04/05/hello-world/index.html" />
+        <link rel="canonical" href="http://yoursite.com/2018/09/18/worker/index.html" />
     
 
     <!-- Structured-data for SEO -->
@@ -261,10 +261,10 @@
 {
     "@context": "https://schema.org",
     "@type": "BlogPosting",
-    "mainEntityOfPage": "http://yoursite.com/2015/04/05/hello-world/index.html",
-    "headline": "Hello World",
-    "datePublished": "Sun Apr 05 2015 22:10:23 GMT+0800",
-    "dateModified": "Mon Aug 27 2018 00:52:47 GMT+0800",
+    "mainEntityOfPage": "http://yoursite.com/2018/09/18/worker/index.html",
+    "headline": "谈谈javascript中的多线程",
+    "datePublished": "Tue Sep 18 2018 23:15:08 GMT+0800",
+    "dateModified": "Tue Sep 18 2018 23:19:19 GMT+0800",
     "author": {
         "@type": "Person",
         "name": "蔡胜龙",
@@ -282,7 +282,7 @@
             "url": "/img/favicon.png"
         }
     },
-    "keywords": "蔡胜龙的博客|前端攻城狮",
+    "keywords": ",前端,javascript蔡胜龙的博客|前端攻城狮",
     "description": "",
 }
 </script>
@@ -348,7 +348,7 @@
     </button>
 
     <ul class="post-toc-wrap mdl-menu mdl-menu--bottom-left mdl-js-menu mdl-js-ripple-effect" for="post-toc-trigger-btn" style="max-height:80vh; overflow-y:scroll;">
-        <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#Quick-Start"><span class="post-toc-number">1.</span> <span class="post-toc-text">Quick Start</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#Create-a-new-post"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">Create a new post</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#Run-server"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">Run server</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#Generate-static-files"><span class="post-toc-number">1.3.</span> <span class="post-toc-text">Generate static files</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#Deploy-to-remote-sites"><span class="post-toc-number">1.4.</span> <span class="post-toc-text">Deploy to remote sites</span></a></li></ol></li></ol>
+        <ol class="post-toc"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#定时器："><span class="post-toc-number">1.</span> <span class="post-toc-text">定时器：</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#Web-Workers"><span class="post-toc-number">2.</span> <span class="post-toc-text">Web Workers</span></a></li></ol>
     </ul>
     
 
@@ -380,7 +380,7 @@
         
     
             <p class="article-headline-p">
-                Hello World
+                谈谈javascript中的多线程
             </p>
         </div>
 
@@ -399,7 +399,7 @@
     <!-- Author Name & Date -->
     <div>
         <strong>蔡胜龙</strong>
-        <span>4月 05, 2015</span>
+        <span>9月 18, 2018</span>
     </div>
 
     <div class="section-spacer"></div>
@@ -417,6 +417,15 @@
 
     <!-- Tags (bookmark) -->
     
+    <button id="article-functions-viewtags-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
+        <i class="material-icons" role="presentation">bookmark</i>
+        <span class="visuallyhidden">bookmark</span>
+    </button>
+    <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="article-functions-viewtags-button">
+        <li class="mdl-menu__item">
+        <a class="post_tag-link" href="/tags/javascript/">javascript</a></li><li class="mdl-menu__item"><a class="post_tag-link" href="/tags/前端/">前端</a>
+    </ul>
+    
 
     <!-- Share -->
     
@@ -431,7 +440,7 @@
 
     <!-- Share Weibo -->
     
-        <a class="post_share-link" href="http://service.weibo.com/share/share.php?appkey=&title=Hello World&url=http://yoursite.com/2015/04/05/hello-world/index.html&pic=http://yoursite.com/img/favicon.png&searchPic=false&style=simple" target="_blank">
+        <a class="post_share-link" href="http://service.weibo.com/share/share.php?appkey=&title=谈谈javascript中的多线程&url=http://yoursite.com/2018/09/18/worker/index.html&pic=http://yoursite.com/img/favicon.png&searchPic=false&style=simple" target="_blank">
             <li class="mdl-menu__item">
                 分享到微博
             </li>
@@ -446,7 +455,7 @@
 
     <!-- Share Google+ -->
     
-        <a class="post_share-link" href="https://plus.google.com/share?url=http://yoursite.com/2015/04/05/hello-world/index.html" target="_blank">
+        <a class="post_share-link" href="https://plus.google.com/share?url=http://yoursite.com/2018/09/18/worker/index.html" target="_blank">
             <li class="mdl-menu__item">
                 分享到 Google+
             </li>
@@ -458,7 +467,7 @@
 
     <!-- Share QQ -->
     
-        <a class="post_share-link" href="http://connect.qq.com/widget/shareqq/index.html?site=蔡胜龙的博客 | 技术交流平台&title=Hello World&summary=&pics=http://yoursite.com/img/favicon.png&url=http://yoursite.com/2015/04/05/hello-world/index.html" target="_blank">
+        <a class="post_share-link" href="http://connect.qq.com/widget/shareqq/index.html?site=蔡胜龙的博客 | 技术交流平台&title=谈谈javascript中的多线程&summary=&pics=http://yoursite.com/img/favicon.png&url=http://yoursite.com/2018/09/18/worker/index.html" target="_blank">
             <li class="mdl-menu__item">
                 分享到 QQ
             </li>
@@ -467,7 +476,7 @@
 
     <!-- Share Telegram -->
     
-        <a class="post_share-link" href="https://telegram.me/share/url?url=http://yoursite.com/2015/04/05/hello-world/index.html&text=Hello World" target="_blank">
+        <a class="post_share-link" href="https://telegram.me/share/url?url=http://yoursite.com/2018/09/18/worker/index.html&text=谈谈javascript中的多线程" target="_blank">
             <li class="mdl-menu__item">
                 分享到 Telegram
             </li>
@@ -483,19 +492,51 @@
                 <!-- Post Content -->
                 <div id="post-content" class="mdl-color-text--grey-700 mdl-card__supporting-text fade out">
     
-        <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><pre><code class="bash">$ hexo new &quot;My New Post&quot;
+        <p>不存在的，javascript中根本不存在多线程……<br>先不要慌，没有多线程我们可以模仿多线程呀！定时器、web workder等等。</p>
+<p><strong>存在即合理，为啥javascript需要多线程？</strong></p>
+<p>javascript对于现如今的web应用是不可或缺的，js在其中肩负了所有的交互和逻辑运算。由于浏览器在执行页面的javascript期间无法响应其他的用户事件，当页面中某部分js代码不可避免的要进行大开销的运算时浏览器本身可能变得非常缓慢甚至完全卡死，因此javascript的性能对于应用的流畅及用户体验至关重要。而多线程能解决这个问题。</p>
+<p>但是就依据目前的发展来看,javascript中的多线程短时间内将不会实现。不过我们有备选方案。多线程的基本问题是不同的线程可以访问并修改相同的变量，当出现线程A要修改线程B正在修改的变量或类似的情况时，这回导致各种各样的问题。</p>
+<h3 id="定时器："><a href="#定时器：" class="headerlink" title="定时器："></a>定时器：</h3><p>在web workers之前有一种方法是通过简单地把运行时间很长的计算拆分成独立的区块，然后使用js的定时器控制其执行：</p>
+<pre><code class="bash">var functionState = {};
+
+function expensiveOperation() {
+    var startTime = new Date().getMilliseconds();
+    while ((new Date().getMilliseonds() - startTime) &lt; 100) {
+        //TODO：它用如下方法执行开销很大的运算
+        //在迭代的语句块中执行100毫秒内完成的工作，
+        //然后修改本函数外部“functionState”中的状态
+
+    };
+    if(!functionsState.isFinished){
+        //退出10毫秒后再次执行expensiveOperation;
+        setTimeout(expensiveOperation(), 10);
+    };
+};
 </code></pre>
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><pre><code class="bash">$ hexo server
+<p>用以上这种拆分模块运算的方法能够实现快速相应的界面，但是用这种方法架构运算可能不那么直接（甚至不可行）。同时现代计算机基本都是“多核”的，这意味着他们真正具备并发执行多个线程的能力。而如上使用延时器强制多核中的一个来完成所有的运算，这是在浪费计算机的处理能力。因此在javascript中模拟多线程时使用worker会更加容易且高效。</p>
+<h3 id="Web-Workers"><a href="#Web-Workers" class="headerlink" title="Web Workers"></a>Web Workers</h3><p>以下代码展示了如何创建并启动Worker：</p>
+<pre><code class="bash">//创建并开始执行worker
+var worker = new Worker(&quot;js/decrypt.js&quot;);
+
+//注册事件处理程序，当worker给主线程发送信息时执行
+worker.onmessage = function(e) {
+    alert(&quot;the decrypted value is &quot; + e.data);
+};
+
+//发送信息给worker，这里是指带解密的值
+worker.postMessage(getValueToDecrypt());
 </code></pre>
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><pre><code class="bash">$ hexo generate
+<p><strong>接下来看一下设想中的 js/decrypt.js的内容：</strong></p>
+<pre><code class="bash">//注册用来接收主线程信息的处理程序
+onmessage = function (e) {
+    var valueToDecrypt = e.data;
+    //这里实现解密功能
+
+    //把值返回给主线程
+    postMessage(decryptedValue);
+};
 </code></pre>
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><pre><code class="bash">$ hexo deploy
-</code></pre>
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="noopener">Deployment</a></p>
+<p>在页面上任何开销很大的（例如，长时间运行）javascript操作都应该委托给Worker，因为这将使得应用程序快速运行。</p>
 
         
     
@@ -538,19 +579,19 @@
             <nav class="material-nav mdl-color-text--grey-50 mdl-cell mdl-cell--12-col">
     <!-- Prev Nav -->
     
-        <a href="/2017/04/05/input-file/" id="post_nav-newer" class="prev-content">
-            <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-color--white mdl-color-text--grey-900" role="presentation">
-                <i class="material-icons">arrow_back</i>
-            </button>
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            新篇
-        </a>
-    
 
     <!-- Section Spacer -->
     <div class="section-spacer"></div>
 
     <!-- Next Nav -->
+    
+        <a href="/2018/09/16/http-head/" id="post_nav-older" class="next-content">
+            旧篇
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-color--white mdl-color-text--grey-900" role="presentation">
+                <i class="material-icons">arrow_forward</i>
+            </button>
+        </a>
     
 </nav>
 
